@@ -1,6 +1,6 @@
-# Nombre del proyecto
+# App Tenderos
 
-Application to be awesome
+Brings small stores a bunch of services that will help them manage their 
 
 ## Table of contents
 
@@ -20,9 +20,9 @@ Application to be awesome
 
 ### Client Details
 
-| Name               | Email             | Role |
-| ------------------ | ----------------- | ---- |
-| Nombre del cliente | prueba@prueba.com | CEO  |
+| Name               | Email             		| Role 					|
+| ------------------ | ------------------------ | ---------------------	|
+| Aldo Lares   		 | alares@bluepeople.com 	| Senior Sales Analyst 	|
 
 
 ### Environment URLS
@@ -32,180 +32,69 @@ Application to be awesome
 
 ### Da team
 
-| Name           | Email             | Role        |
-| -------------- | ----------------- | ----------- |
-| Nombre miembro | prueba@prueba.com | Development |
-| Nombre miembro | prueba@prueba.com | Development |
-| Nombre miembro | prueba@prueba.com | Development |
+| Name          		   | Email             			| Role        |
+| ------------------------ | -------------------------- | ----------- |
+| Arturo Cantú Cisneros    | a0119641@gmail.com 		| Development |
+| Esteban Arocha Ortuño    | estebanarocha1@gmail.com 	| Development |
+| Samantha Solis Pascacio  | a01039412@itesm.mx 		| Development |
+| Valentin Trujillo García | alexandro4v@gmail.com 		| Development |
 
 ### Technology Stack
-| Technology    | Version      |
-| ------------- | -------------|
-| Technology 1  | ##.##.##     |
-| Technology 2  | ##.##.##     |
-| Technology 3  | ##.##.##     |
+| Technology     | Version      |
+| -------------- | -------------|
+| Android Studio | 3.6.1        |
+| Kotlin	     | 1.3.0	    |
+| Android	     | 5.0.0        |
 
 ### Management tools
 
 You should ask for access to this tools if you don't have it already:
 
-* [Github repo](https://github.com/)
-* [Backlog]()
-* [Heroku](https://crowdfront-staging.herokuapp.com/)
-* [Documentation](https://drive.com)
+* [Github repo](https://github.com/ProyectoIntegrador2018/tenderos)
+* [Backlog](https://teams.microsoft.com/_#/school/tab::66092c4e-5ee6-4852-99d1-607f82abf948/Proyecto?threadId=19:242005db4c744d77bed8da3072cb3e82@thread.tacv2&ctx=channel)
+* [Documentation](https://drive.google.com/drive/u/0/folders/1LIWhHVsdTVLpmetW2GNYXAYw_jIL3jgw)
 
 ## Development
 
 ### Setup the project
 
-You'll definitely want to install [`plis`](https://github.com/IcaliaLabs/plis), as in this case will
-let you bring up the containers needed for development. This is done by running the command
-`plis start`, which will start up the services in the `development` group (i.e. rails
-and sidekiq), along with their dependencies (posgres, redis, etc).
+For this project you will need to install Android studio along with the Android SDK from the API level 21, as optional downloads and for testing purposes download and install any other API level above 21 that you would require. This will be done directly from Android Studio in the Android SDK Manager, by ipressing on the SDK Manager button and ticking the required SDKs.   
 
-After installing please you can follow this simple steps:
+After installing these please you can follow this simple steps:
 
-1. Clone this repository into your local machine
+1. Clone this repository into your local machine.
 
 ```bash
-$ git clone git@github.com:IcaliaLabs/crowdfront.git
+$ git clone git@github.com:ProyectoIntegrador2018/tenderos.git
 ```
 
-2. Fire up a terminal and run:
+2. Now you will need to setup a Virtual Device to run the application. To do this you will have to go to Devices > Open AVD Manager. 
 
-```bash
-$ plis run web bash
-```
+3. Click on Create a New Virtual Device and choose a phone template from the list and click on next. 
 
-3. Inside the container you need to migrate the database:
+4. Select a system image for your virtual device, click on download and then on Finish.
 
-```
-% rails db:migrate
-```
+You now have your setup ready to open and run the project. 
+
 
 ### Running the stack for Development
 
-1. Fire up a terminal and run: 
+1. Open Android Studio and go to File > Open and find the Folder you just cloned.
 
-```
-plis start
-```
+2. Run the app by clicking in the play icon in Android Studio.
 
-That command will lift every service crowdfront needs, such as the `rails server`, `postgres`, and `redis`.
+The project will now run in either a external device or in an emulator. 
 
-
-It may take a while before you see anything, you can follow the logs of the containers with:
-
-```
-$ docker-compose logs
-```
-
-Once you see an output like this:
-
-```
-web_1   | => Booting Puma
-web_1   | => Rails 5.1.3 application starting in development on http://0.0.0.0:3000
-web_1   | => Run `rails server -h` for more startup options
-web_1   | => Ctrl-C to shutdown server
-web_1   | Listening on 0.0.0.0:3000, CTRL+C to stop
-```
-
-This means the project is up and running.
 
 ### Stop the project
 
-In order to stop crowdfront as a whole you can run:
-
-```
-% plis stop
-```
-
-This will stop every container, but if you need to stop one in particular, you can specify it like:
-
-```
-% plis stop web
-```
-
-`web` is the service name located on the `docker-compose.yml` file, there you can see the services name and stop each of them if you need to.
-
-### Restoring the database
-
-You probably won't be working with a blank database, so once you are able to run crowdfront you can restore the database, to do it, first stop all services:
-
-```
-% plis stop
-```
-
-Then just lift up the `db` service:
-
-```
-% plis start db
-```
-
-The next step is to login to the database container:
-
-```
-% docker exec -ti crowdfront_db_1 bash
-```
-
-This will open up a bash session in to the database container.
-
-Up to this point we just need to download a database dump and copy under `crowdfront/backups/`, this directory is mounted on the container, so you will be able to restore it with:
-
-```
-root@a3f695b39869:/# bin/restoredb crowdfront_dev db/backups/<databaseDump>
-```
-
-If you want to see how this script works, you can find it under `bin/restoredb`
-
-Once the script finishes its execution you can just exit the session from the container and lift the other services:
-
-```
-% plis start
-```
+To stop the emulator you can click on the stop button on the navigation bar. 
 
 ### Debugging
 
-We know you love to use `debugger`, and who doesn't, and with Docker is a bit tricky, but don't worry, we have you covered.
+To run the emulator with the debugging process you can click on the Debug App button. 
+If the Debug window is not open, select View > Tool Windows > Debug. 
 
-Just run this line at the terminal and you can start debugging like a pro:
+This will display the logs from the app. 
 
-```
-% plis attach web
-```
 
-This will display the logs from the rails app, as well as give you access to stop the execution on the debugging point as you would expect.
-
-**Take note that if you kill this process you will kill the web service, and you will probably need to lift it up again.**
-
-### Running specs
-
-To run specs, you can do:
-
-```
-$ plis run test rspec
-```
-
-Or for a specific file:
-
-```
-$ plis run test rspec spec/models/user_spec.rb
-```
-
-### Checking code for potential issues
-
-To run specs, you can do:
-
-```
-$ plis run web reek
-```
-
-```
-$ plis run web rubocop
-```
-
-```
-$ plis run web scss_lint
-```
-
-Or any other linter you have.
