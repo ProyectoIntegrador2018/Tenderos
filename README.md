@@ -65,7 +65,7 @@ After installing these please you can follow this simple steps:
 1. Clone this repository into your local machine.
 
 ```bash
-$ git clone git@github.com:ProyectoIntegrador2018/tenderos.git
+$ git clone https://github.com/ProyectoIntegrador2018/tenderos.git
 ```
 
 2. Now you will need to setup a Virtual Device to run the application. To do this you will have to go to Devices > Open AVD Manager. 
