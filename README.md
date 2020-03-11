@@ -1,6 +1,6 @@
 # App Tenderos
 
-Brings small stores a bunch of services that will help them manage their 
+Brings small stores a bunch of services that will help them manage their financial and inventory assets with services such as national and abroad money transfer, cash withdrawal, virtual wallet management, services payments, the reception of inventory and sales of products.
 
 ## Table of contents
 
