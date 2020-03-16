@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Only Themes. -->
+    <style name="AppTheme"  parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/tenderos_primary</item>
+        <item name="colorPrimaryDark">@color/tenderos_primary_dark</item>
+        <item name="colorAccent">@color/tenderos_secondary</item>
+        <item name="colorSecondary">@color/tenderos_secondary</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">false</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/tenderos_primary_dark</item>
+        <!--item name="android:windowBackground">@drawable/splash_screen</item-->
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
+        <item name="android:navigationBarColor" tools:ignore="NewApi">@color/default_white</item>
+        <item name="android:textColorSecondary">@color/default_white</item>
+    </style>
+</resources>
