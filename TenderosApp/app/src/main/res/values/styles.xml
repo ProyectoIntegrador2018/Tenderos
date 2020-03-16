@@ -1,11 +1,21 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Widget"></style>
+    <style name="Widget.Tenderos"/>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="Widget.ePesos.Button.Primary" parent="Widget.MaterialComponents.Button" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/Tenderos.Button</item>
+        <item name="android:textColor">#fff</item>
+
+        <item name="android:ems">12</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:text">@string/next</item>
+        <item name="cornerRadius">0dp</item>
+        <item name="android:backgroundTint" tools:targetApi="lollipop">@color/tenderos_primary</item>
     </style>
 
+
+
+    <string name="next">Siguiente</string>
 </resources>
