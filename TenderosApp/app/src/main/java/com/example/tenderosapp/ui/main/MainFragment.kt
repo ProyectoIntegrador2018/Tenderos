@@ -1,30 +1,44 @@
 package com.example.tenderosapp.ui.main
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
+import com.example.tenderosapp.MainActivity
 import com.example.tenderosapp.R
+import com.example.tenderosapp.viewmodel.MainViewModel
+import kotlinx.android.synthetic.main.main_fragment.*
 
-class MainFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = MainFragment()
-    }
+class MainFragment : Fragment(R.layout.main_fragment) {
 
     private lateinit var viewModel: MainViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
-    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
+        toolbar_main_tb.inflateMenu(R.menu.toolbar_items)
+        toolbar_main_tb.setOnMenuItemClickListener {
+            onOptionsItemSelected(it)
+        }
+        readqr_main_fab.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_transactionFragment))
     }
 
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        Log.d("CLICK_ACTION", "DONE")
+        when (item.itemId) {
+            R.id.action_show_id -> (context as MainActivity).navController.navigate(R.id.action_mainFragment_to_displayIdFragment)
+            R.id.action_show_settings -> Toast.makeText(context, "Settings selected", Toast.LENGTH_SHORT).show()
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }
+

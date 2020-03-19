@@ -1,4 +1,4 @@
-package com.example.tenderosapp.ui.main
+package com.example.tenderosapp.viewmodel
 
 import androidx.lifecycle.ViewModel
 
