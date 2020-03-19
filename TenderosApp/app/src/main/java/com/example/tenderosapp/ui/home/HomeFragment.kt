@@ -1,22 +1,19 @@
-package com.example.tenderosapp.ui.main
+package com.example.tenderosapp.ui.home
 
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.example.tenderosapp.MainActivity
 import com.example.tenderosapp.R
 import com.example.tenderosapp.viewmodel.MainViewModel
-import kotlinx.android.synthetic.main.main_fragment.*
+import kotlinx.android.synthetic.main.home_fragment.*
 
 
-class MainFragment : Fragment(R.layout.main_fragment) {
+class HomeFragment : Fragment(R.layout.home_fragment) {
 
     private lateinit var viewModel: MainViewModel
 
