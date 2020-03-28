@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
+import android.widget.GridView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
@@ -26,6 +27,10 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
             onOptionsItemSelected(it)
         }
         readqr_main_fab.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_transactionFragment))
+
+        val servicios = arrayOf("Telcel","Usacel", "Movistar", "Vizon")
+        servicios_gv
+
     }
 
 
