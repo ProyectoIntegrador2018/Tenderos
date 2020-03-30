@@ -17,7 +17,6 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
     private lateinit var viewModel: MainViewModel
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
