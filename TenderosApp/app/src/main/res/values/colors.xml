@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Color brand pallette -->
-    <color name="tenderos_primary">#ffd54f</color>
+    <color name="tenderos_primary">#FFDB03</color>
     <color name="tenderos_primary_dark">#c8a415</color>
     <color name="tenderos_primary_light">#ffff81</color>
 
     <color name="tenderos_secondary">#304ffe</color>
-    <color name="tenderos_secondary_light">#7a7cff</color>
-    <color name="tenderos_secondary_dark">#0026ca</color>
+    <color name="tenderos_secondary_light">#558EFF</color>
+    <color name="tenderos_secondary_dark">#083183</color>
 
     <color name="tenderos_accent">#FF0266</color>
 
     <color name="tenderos_primary_disable">#2839A935</color>
     <color name="tenderos_secondary_disable">#28056CA4</color>
-    <color name="tenderos_red">#D0021B</color>
-
+    <color name="tenderos_red">#E8464C</color>
 
     <color name="tenderos_background" >#F7F7F7</color>
     <color name="tenderos_primary_textcolor" >#385E67</color>
@@ -23,4 +22,5 @@
     <color name="default_white">#FFFFFF</color>
     <color name="default_backdround">#B7B7B7</color>
     <color name="default_black">#0F0F0F</color>
+    <color name="default_grey">#707070</color>
 </resources>
