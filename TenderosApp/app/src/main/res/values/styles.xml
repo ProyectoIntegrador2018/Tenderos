@@ -117,7 +117,7 @@
         <item name="color">@color/default_black</item>
     </style>
 
-    <style name="TanderosToolbar" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="TanderosToolbar" parent="Widget.MaterialComponents.BottomAppBar.Colored">
         <item name="android:itemTextAppearance">@style/menu_item_color</item>
     </style>
     <style name="menu_item_color">

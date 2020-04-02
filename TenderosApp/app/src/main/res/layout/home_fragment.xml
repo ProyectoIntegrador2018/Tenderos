@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/backgroundhome"
-    android:orientation="vertical"
-    tools:context=".ui.home.HomeFragment">
-
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/tittle_tv"
@@ -19,39 +14,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/readqr_main_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="24dp"
-        android:gravity="right"
-        android:src="@drawable/codigoqr"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:tint="@null"
+        app:backgroundTint="@color/default_white"
+        app:srcCompat="@drawable/ic_qrcode_white_24dp"
+        android:tint="@color/default_white"
+        android:backgroundTint="@color/tenderos_primary"
+        app:layout_anchor="@id/toolbar_main_tb"/>
 
-    <GridView
-        android:id="@+id/servicios_gv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnWidth="100dp"
-        android:numColumns="2"
-        android:verticalSpacing="24dp"
-        android:horizontalSpacing="10dp"
-        android:stretchMode="columnWidth"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/toolbar_main_tb"
-        app:layout_constraintTop_toBottomOf="@+id/readqr_main_fab"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/toolbar_main_tb"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_gravity="top|start|end"
-        android:layout_marginBottom="24dp"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/tenderos_secondary"
+        android:layout_gravity="bottom"
         android:theme="@style/TanderosToolbar"
-        app:layout_collapseMode="pin"
-        app:layout_constraintBottom_toBottomOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:navigationIcon="@drawable/round_menu_24"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
