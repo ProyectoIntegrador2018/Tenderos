@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@drawable/gradient_background"
     android:layout_height="match_parent">
 
     <TextView
@@ -19,18 +20,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:tint="@null"
+        app:fabSize="normal"
         app:backgroundTint="@color/default_white"
         app:srcCompat="@drawable/ic_qrcode_white_24dp"
         android:tint="@color/default_white"
-        android:backgroundTint="@color/tenderos_primary"
+        android:backgroundTint="@color/tenderos_secondary"
         app:layout_anchor="@id/toolbar_main_tb"/>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/toolbar_main_tb"
+        app:elevation="0dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:backgroundTint="@color/tenderos_secondary"
+        android:layout_height="?actionBarSize"
+        app:fabAlignmentMode="end"
+        app:hideOnScroll="true"
+        android:backgroundTint="@android:color/transparent"
         android:layout_gravity="bottom"
-        android:theme="@style/TanderosToolbar"
-        app:navigationIcon="@drawable/round_menu_24"/>
+        android:theme="@style/TanderosToolbar"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

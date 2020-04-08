@@ -4,11 +4,13 @@
 
 <!-- BUTTONS -->
 
-    <style name="Widget.Tenderos.Button.Primary" parent="Widget.MaterialComponents.Button" >
+    <style name="Widget.Tenderos.Button.Primary" parent="Widget.MaterialComponents.Button.TextButton" >
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">@style/Tenderos.Button</item>
-        <item name="android:textColor">@color/default_black</item>
+        <item name="android:textSize">16dp</item>
+
+        <item name="android:textColor">@color/tenderos_secondary</item>
         <item name="drawerArrowStyle">@style/BackIconStyle</item>
         <item name="android:textColorPrimary">@color/default_black</item>
         <item name="android:textColorSecondaryInverse">@color/default_black</item>
@@ -40,13 +42,14 @@
     </style>
 
 
-    <style name="Widget.Tenderos.ImageButton.ExitButton" parent="Widget.AppCompat.ImageButton">
-        <item name="android:layout_width">55dp</item>
-        <item name="android:layout_height">55dp</item>
-        <item name="android:layout_marginTop">49dp</item>
-        <item name="android:layout_marginEnd">24dp</item>
-        <item name="android:background">@null</item>
-        <item name="android:src">@drawable/cross_button</item>
+    <style name="Widget.Tenderos.ImageButton.ExitButton" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
+        <item name="android:layout_width">54dp</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:layout_marginTop">48dp</item>
+
+
+        <item name="android:src">@drawable/outline_close_24</item>
     </style>
 
     <style name="Widget.Tenderos.FAB" parent="Widget.MaterialComponents.ExtendedFloatingActionButton" >
@@ -61,12 +64,14 @@
 
     <style name="Widget.Tenderos.TextField.Primary" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
         <item name="android:layout_width">match_parent</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:lines">1</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="hintTextColor">@color/tenderos_secondary_dark</item>
         <item name="boxStrokeColor">@color/tenderos_secondary_dark</item>
         <item name="android:textColor">@color/tenderos_secondary_dark</item>
-        <item name="android:layout_marginStart">48dp</item>
-        <item name="android:layout_marginEnd">48dp</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
         <item name="android:textCursorDrawable">@null</item>
     </style>
 
@@ -117,7 +122,7 @@
         <item name="color">@color/default_black</item>
     </style>
 
-    <style name="TanderosToolbar" parent="Widget.MaterialComponents.BottomAppBar.Colored">
+    <style name="TanderosToolbar" parent="Widget.MaterialComponents.BottomAppBar.PrimarySurface">
         <item name="android:itemTextAppearance">@style/menu_item_color</item>
     </style>
     <style name="menu_item_color">
