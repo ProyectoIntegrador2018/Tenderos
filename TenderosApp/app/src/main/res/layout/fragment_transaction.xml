@@ -48,4 +48,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/qrcode_iv" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_test"
+        android:text="Test camara"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

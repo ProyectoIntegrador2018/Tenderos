@@ -16,10 +16,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
         navController = findNavController(R.id.nav_host_fragment)
-
-        val integrator = IntentIntegrator(this)
-        //integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE) // optional
-        integrator.initiateScan()
     }
 
     override fun onActivityResult(
