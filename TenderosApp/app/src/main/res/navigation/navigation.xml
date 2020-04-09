@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/fragment_login">
+
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="com.example.tenderosapp.ui.home.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_displayIdFragment"
+            app:destination="@id/fragment_display_store_id" />
+        <action
+            android:id="@+id/action_mainFragment_to_transactionFragment"
+            app:destination="@id/fragment_transaction" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_display_store_id"
+        android:name="com.example.tenderosapp.ui.identification.DisplayIdFragment"
+        android:label="fragment_display_store_id"
+        tools:layout="@layout/fragment_display_store_id" />
+    <fragment
+        android:id="@+id/fragment_login"
+        android:name="com.example.tenderosapp.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_mainFragment"
+            app:destination="@id/home_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_transaction"
+        android:name="com.example.tenderosapp.ui.transaction.TransactionFragment"
+        android:label="fragment_transaction"
+        tools:layout="@layout/fragment_transaction" />
+
+
+</navigation>

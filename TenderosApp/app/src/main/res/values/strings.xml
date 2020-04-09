@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">TenderosApp</string>
+    <string name="login_hint">Tenderos Hint</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="first_title">Compra de Tiempo Aire</string>
+    <string name="next">Siguiente</string>
+    <string name="login_text">Bienvenido</string>
+    <string name="login_email">Correo electrónico</string>
+    <string name="login_password">Contraseña</string>
+    <string name="login_button">Ingresar</string>
+    <string name="nombre_tienda">NombreTienda</string>
+    <string name="confirmacion_trans">Confirma transacción</string>
+    <string name="servicios">Servicios</string>
+    <string name="nombre_servicio">Servicio</string>
+    <string name="qrcode_message">Muestra este código a tu repartidor</string>
+
+</resources>
