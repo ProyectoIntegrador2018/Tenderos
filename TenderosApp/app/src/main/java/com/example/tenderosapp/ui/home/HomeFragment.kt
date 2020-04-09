@@ -18,7 +18,6 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
     private lateinit var viewModel: MainViewModel
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
@@ -26,18 +25,14 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         toolbar_main_tb.setOnMenuItemClickListener {
             onOptionsItemSelected(it)
         }
-        readqr_main_fab.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_transactionFragment))
-
-        val servicios = arrayOf("Telcel","Usacel", "Movistar", "Vizon")
-        servicios_gv
+        readqr_main_fab.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_displayIdFragment))
 
     }
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        Log.d("CLICK_ACTION", "DONE")
         when (item.itemId) {
-            R.id.action_show_id -> (context as MainActivity).navController.navigate(R.id.action_mainFragment_to_displayIdFragment)
+            R.id.action_show_id -> (context as MainActivity).navController.navigate(R.id.action_mainFragment_to_transactionFragment)
             R.id.action_show_settings -> Toast.makeText(context, "Settings selected", Toast.LENGTH_SHORT).show()
         }
         return super.onOptionsItemSelected(item)

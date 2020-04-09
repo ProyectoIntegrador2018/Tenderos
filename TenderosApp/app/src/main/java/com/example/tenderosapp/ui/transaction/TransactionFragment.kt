@@ -1,5 +1,8 @@
 package com.example.tenderosapp.ui.transaction
 
+import android.view.View
+import com.example.tenderosapp.MainActivity
+
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -18,13 +21,6 @@ import java.lang.Exception
  * A simple [Fragment] subclass.
  */
 class TransactionFragment : Fragment(R.layout.fragment_transaction) {
-
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        return inflater.inflate(R.layout.fragment_transaction, container, false)
-//    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -76,12 +72,14 @@ class TransactionFragment : Fragment(R.layout.fragment_transaction) {
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
                 49374 -> {
-                    val scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+                    val scanResult =
+                        IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
                     if (scanResult != null) {
                         Log.d("Holi2", scanResult.contents)
                         var gson = Gson()
                         try {
-                            var convertedTransaction: Transaction = gson.fromJson(scanResult.contents, Transaction::class.java)
+                            var convertedTransaction: Transaction =
+                                gson.fromJson(scanResult.contents, Transaction::class.java)
                             Log.d("Holi2_prod_name", convertedTransaction.products[0].productName)
                         } catch (e: Exception) {
                             Log.d("Holi2_prod_name", "This is not a transaction")
@@ -90,6 +88,13 @@ class TransactionFragment : Fragment(R.layout.fragment_transaction) {
                     }
                 }
             }
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        exitbutton_ib.setOnClickListener {
+            (context as MainActivity).navController.popBackStack()
         }
     }
 

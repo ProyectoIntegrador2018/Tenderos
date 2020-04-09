@@ -20,13 +20,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/exitbutton_ib"
         style="@style/Widget.Tenderos.ImageButton.ExitButton"
+        app:fabSize="mini"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        app:elevation="4dp"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/default_white"
+        android:tint="@color/default_white"
+        android:backgroundTint="@color/default_white"/>
 
     <ImageView
         android:id="@+id/qrcode_iv"
@@ -48,10 +53,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/qrcode_iv" />
 
-    <Button
+   <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btn_test"
-        android:text="Test camara"/>
+        android:text="Test camara"
+       tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

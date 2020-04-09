@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Color brand pallette -->
-    <color name="tenderos_primary">#FFDB03</color>
+    <color name="tenderos_primary">#FDDB36</color>
     <color name="tenderos_primary_dark">#c8a415</color>
-    <color name="tenderos_primary_light">#ffff81</color>
-
+    <color name="tenderos_primary_light">#FFF3C4</color>
     <color name="tenderos_secondary">#304ffe</color>
     <color name="tenderos_secondary_light">#558EFF</color>
     <color name="tenderos_secondary_dark">#083183</color>
