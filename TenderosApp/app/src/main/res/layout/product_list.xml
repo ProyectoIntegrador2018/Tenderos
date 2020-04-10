@@ -1,27 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/producto_name"
-        style="@style/Widget.Tenderos.TextView.regularFont"
-        android:text="@string/nombre_producto" />
+        android:id="@+id/product_name"
+        style="@style/Widget.Tenderos.TextView.cellTittles"
+        android:text="@string/nombre_producto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
 
     <TextView
-        android:id="@+id/regresado_tv"
-        style="@style/Widget.Tenderos.TextView.regularFont"
+        android:id="@+id/returned_tv"
+        style="@style/Widget.Tenderos.TextView.cellTittles"
         android:text="@string/default_value"
-        android:layout_marginEnd="40dp"
-        android:layout_toStartOf="@id/entregado_tv"/>
-
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
 
     <TextView
-        android:id="@+id/entregado_tv"
-        style="@style/Widget.Tenderos.TextView.regularFont"
-        android:layout_alignParentEnd="true"
-        android:paddingEnd="80dp"
-        android:text="@string/default_value" />
+        android:id="@+id/delivered_tv"
+        style="@style/Widget.Tenderos.TextView.cellTittles"
+        android:text="@string/default_value"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
 
-</RelativeLayout>
+</LinearLayout>
+

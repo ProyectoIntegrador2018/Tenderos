@@ -34,32 +34,14 @@ class TransactionFragment : Fragment(R.layout.fragment_transaction) {
 
         }
 
-        val transaction =  Transaction()
-        val product_one = TransactionProduct()
-        val product_two = TransactionProduct()
+        val products : MutableList<TransactionProduct> = ArrayList()
 
-        transaction.storeId = "123456"
-        transaction.storeName = "Doña Chuchita"
-        transaction.actualBalance = 1000
-        transaction.businessId = "987654"
-        transaction.businessName = "Bimbo"
-        transaction.saleTotal = 1500
-        transaction.date = System.currentTimeMillis()
+        products.add(TransactionProduct("gansito_123456789", "Gansitos", 6, 10, 500))
+        products.add(TransactionProduct("pinguino_123455683", "Pinguinos", 30, 100, 200))
 
-        product_one.deliveredAmount = 10
-        product_one.productId = "gansito_123456789"
-        product_one.productName = "Gansitos"
-        product_one.returnedAmount = 0
-        product_one.total = 1000
 
-        product_two.deliveredAmount = 5
-        product_two.productId = "Pinguino_123456789"
-        product_two.productName = "Pinguinos"
-        product_two.returnedAmount = 0
-        product_two.total = 500
+        val transaction =  Transaction("123","123456","Doña Chuchita","987654","Bimbo", System.currentTimeMillis(), 1500, 200, products)
 
-        transaction.products.add(product_one)
-        transaction.products.add(product_two)
 
         var gson = Gson()
         var jsonString = gson.toJson(transaction)

@@ -95,11 +95,40 @@
         <item name="android:textColor">@color/default_black</item>
     </style>
 
+    <style name="Widget.Tenderos.TextView.ThirdTitle" parent="Widget.MaterialComponents.TextView" >
+        <item name="android:fontFamily">@font/quicksand</item>
+        <item name="android:textColor">@color/default_lightblack</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
     <style name="Widget.Tenderos.TextView.Message" parent="Widget.MaterialComponents.TextView" >
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">8dp</item>
     </style>
+
+    <style name="Widget.Tenderos.TextView.regularFont" parent="Widget.MaterialComponents.TextView" >
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/avenir_next</item>
+        <item name="android:textColor">@color/default_darkgrey</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">left</item>
+    </style>
+
+    <style name="Widget.Tenderos.TextView.cellTittles" parent="Widget.MaterialComponents.TextView" >
+        <item name="android:fontFamily">@font/avenir_next</item>
+        <item name="android:textColor">@color/default_darkgrey</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Widget.Tenderos.TextView.cellTittlesBold" parent="Widget.MaterialComponents.TextView" >
+        <item name="android:fontFamily">@font/avenir_next_bold</item>
+        <item name="android:textColor">@color/default_darkgrey</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
 
 
     <style name="Widget.Tenderos.TextView.PrimaryTitle.End" >

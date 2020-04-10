@@ -75,7 +75,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/login_button"
-                android:text="Iniciar sesión"
+                android:text="@string/login_button"
                 app:shapeAppearanceOverlay="@style/CustomSmallShapeAppearance"
                 style="@style/Widget.Tenderos.Button.Primary"
                 android:layout_margin="32dp" />
