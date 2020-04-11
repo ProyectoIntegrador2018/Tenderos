@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.CursorAdapter
 import android.widget.LinearLayout
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,34 +40,27 @@ class TransactionDisplayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val transactionData = arguments?.getString("transaction_data")
+        val gson = Gson()
+        val transaction: Transaction = gson.fromJson(transactionData, Transaction::class.java)
+
+        business_tv.text = transaction.businessName
+        store_tv.text = transaction.storeName
+        saldo_anterior_qty.text = transaction.previousBalance.toString()
+        total_qty.text = transaction.saleTotal.toString()
+        pago_qty.text = transaction.payment.toString()
+        saldo_nuevo_qty.text = transaction.actualBalance.toString()
+
         recyclerview.apply {
             layoutManager = LinearLayoutManager(activity)
-            adapter = customAdapter(getProductos())
+
+            adapter = customAdapter(transaction.products)
         }
 
-        continue_button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_fragmentTransactionDisplay_to_transactionFragment))
+        continue_button.setOnClickListener {
+            val bundle = bundleOf("transaction_data" to transactionData)
+            (context as MainActivity).navController.navigate(R.id.action_fragmentTransactionDisplay_to_transactionFragment, bundle)
+            //Navigation.createNavigateOnClickListener(R.id.action_fragmentTransactionDisplay_to_transactionFragment)
+        }
     }
-
-
-    fun getProductos(): MutableList<TransactionProduct>  {
-        var products : MutableList<TransactionProduct> = ArrayList()
-        products.add(TransactionProduct("gansito_123456789", "Gansitos", 6, 10, 500))
-        products.add(TransactionProduct("pinguino_123455683", "Pinguinos", 30, 100, 200))
-        products.add(TransactionProduct("gansito_123456789", "Gansitos", 6, 10, 500))
-        products.add(TransactionProduct("pinguino_123455683", "Pinguinos", 30, 100, 200))
-        products.add(TransactionProduct("gansito_123456789", "Gansitos", 6, 10, 500))
-        products.add(TransactionProduct("pinguino_123455683", "Pinguinos", 30, 100, 200))
-        products.add(TransactionProduct("gansito_123456789", "Gansitos", 6, 10, 500))
-        products.add(TransactionProduct("pinguino_123455683", "Pinguinos", 30, 100, 200))
-        products.add(TransactionProduct("gansito_123456789", "Gansitos", 6, 10, 500))
-        products.add(TransactionProduct("pinguino_123455683", "Pinguinos", 30, 100, 200))
-        products.add(TransactionProduct("gansito_123456789", "Gansitos", 6, 10, 500))
-        products.add(TransactionProduct("pinguino_123455683", "Pinguinos", 30, 100, 200))
-        products.add(TransactionProduct("gansito_123456789", "Gansitos", 6, 10, 500))
-        products.add(TransactionProduct("pinguino_123455683", "Pinguinos", 30, 100, 200))
-
-        var transaction =  Transaction("123","123456","Doña Chuchita","987654","Bimbo", System.currentTimeMillis(), 1500, 200, products)
-        return products
-    }
-
 }
