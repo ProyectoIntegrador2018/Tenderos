@@ -14,8 +14,9 @@
             android:id="@+id/action_mainFragment_to_displayIdFragment"
             app:destination="@id/fragment_display_store_id" />
         <action
-            android:id="@+id/action_mainFragment_to_transactionFragment"
-            app:destination="@id/fragment_transaction" />
+            android:id="@+id/action_mainFragment_to_display_transaction"
+            app:destination="@id/fragment_transaction_display" />
+
     </fragment>
     <fragment
         android:id="@+id/fragment_display_store_id"
@@ -36,6 +37,17 @@
         android:name="com.example.tenderosapp.ui.transaction.TransactionFragment"
         android:label="fragment_transaction"
         tools:layout="@layout/fragment_transaction" />
+    <fragment
+        android:id="@+id/fragment_transaction_display"
+        android:name="com.example.tenderosapp.ui.transaction.TransactionDisplayFragment"
+        android:label="fragment_transaction_display"
+        tools:layout="@layout/fragment_display_transaction">
+
+        <action
+            android:id="@+id/action_fragmentTransactionDisplay_to_transactionFragment"
+            app:destination="@id/fragment_transaction" />
+
+    </fragment>
 
 
 </navigation>
