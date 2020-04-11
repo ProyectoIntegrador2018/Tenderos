@@ -55,6 +55,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                         try {
                             val convertedTransaction: Transaction =
                                 gson.fromJson(scanResult.contents, Transaction::class.java)
+                            Log.d("ErrorTransactionQR", convertedTransaction.transactionId)
                             if (convertedTransaction == null) {
                                 throw Exception()
                             }
