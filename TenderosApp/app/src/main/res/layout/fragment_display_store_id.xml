@@ -12,7 +12,7 @@
     <TextView
         android:id="@+id/title_tv"
         style="@style/Widget.Tenderos.TextView.SecondaryTitle"
-        android:layout_width="223dp"
+        android:layout_width="wrap_content"
         android:layout_height="67dp"
         android:layout_marginTop="152dp"
         android:text="@string/nombre_tienda"

@@ -1,8 +1,10 @@
 package com.example.tenderosapp.ui.identification
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.view.ViewGroup
 import com.example.tenderosapp.MainActivity
 import com.example.tenderosapp.R
 import com.github.sumimakito.awesomeqr.AwesomeQrRenderer
@@ -10,15 +12,19 @@ import com.github.sumimakito.awesomeqr.RenderResult
 import com.github.sumimakito.awesomeqr.option.RenderOption
 import com.github.sumimakito.awesomeqr.option.color.Color
 import kotlinx.android.synthetic.main.fragment_display_store_id.*
-import kotlinx.android.synthetic.main.item_list.view.*
 
-class DisplayIdFragment : Fragment(R.layout.fragment_display_store_id) {
+class DisplayIdFragment : Fragment() {
 
-    fun onActivityCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = inflater.inflate(R.layout.fragment_display_store_id , container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        exitbutton_ib.setOnClickListener {
-            (context as MainActivity).navController.popBackStack()
-        }
+
+        title_tv.text = "Doña Chuchita"
 
         //val constraintLayout = findViewById(R.id.constraintLayout) as ConstraintLayout
         //Opciones de Colores del QR
@@ -38,25 +44,25 @@ class DisplayIdFragment : Fragment(R.layout.fragment_display_store_id) {
         renderOption.color = color //Colores definidos anteriormente
         //renderOption.background = background //Tener un fondo
         // renderOption.logo = logo //Usar un logo en el codigo QR
-
-
-        val result = AwesomeQrRenderer.renderAsync(renderOption, { result ->
+        try {
+            val result = AwesomeQrRenderer.render(renderOption)
             if (result.bitmap != null) {
-                //Manipular lo desplegado en pantalla
-                title_tv.text = "my name is jeb"
                 qrcode_iv.setImageBitmap(result.bitmap)
-                //val imageView = ImageView(this)
-                //imageView.setImageBitmap(result.bitmap)
-                //constraintLayout.addView(imageView)
-
+                // play with the bitmap
             } else if (result.type == RenderResult.OutputType.GIF) {
-                // En caso de tener un background Gif (El cual posiblemente agregemos para más estética)
+                // If your Background is a GifBackground, the image
+                // will be saved to the output file set in GifBackground
+                // instead of being returned here. As a result, the
+                // result.bitmap will be null.
             } else {
-                //Regresar Error
+                // Oops, something gone wrong.
             }
-        }, {
-                exception -> exception.printStackTrace()
-        })
+        } catch (e: Exception) {
+            e.printStackTrace()
+            // Oops, something gone wrong.
+        }
+        exitbutton_ib.setOnClickListener {
+            (context as MainActivity).navController.popBackStack()
+        }
     }
-
 }
