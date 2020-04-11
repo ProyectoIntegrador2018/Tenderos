@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tittle_tv"
+        android:id="@+id/title_tv"
         style="@style/Widget.Tenderos.TextView.PrimaryTitle"
         android:layout_marginStart="32dp"
         android:layout_marginTop="33dp"

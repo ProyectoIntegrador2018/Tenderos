@@ -10,7 +10,7 @@
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
-        android:id="@+id/tittle_tv"
+        android:id="@+id/title_tv"
         style="@style/Widget.Tenderos.TextView.SecondaryTitle"
         android:layout_width="223dp"
         android:layout_height="67dp"
@@ -18,20 +18,20 @@
         android:text="@string/nombre_tienda"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/exitbutton_ib"
         style="@style/Widget.Tenderos.ImageButton.ExitButton"
-        app:fabSize="mini"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:elevation="4dp"
-        app:backgroundTint="@color/default_white"
+        android:backgroundTint="@color/default_white"
         android:tint="@color/default_white"
-        android:backgroundTint="@color/default_white"/>
+        app:backgroundTint="@color/default_white"
+        app:elevation="4dp"
+        app:fabSize="mini"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/qrcode_iv"
@@ -42,7 +42,7 @@
         android:src="@drawable/dummyqr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tittle_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/title_tv" />
 
     <TextView
         android:id="@+id/qrcode_msg"
