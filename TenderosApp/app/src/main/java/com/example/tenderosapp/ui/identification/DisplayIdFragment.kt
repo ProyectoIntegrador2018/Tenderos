@@ -16,7 +16,7 @@ class DisplayIdFragment : Fragment(R.layout.fragment_display_store_id) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-                exitbutton_ib.setOnClickListener {
+        exitbutton_ib.setOnClickListener {
             (context as MainActivity).navController.popBackStack()
         }
 
@@ -57,9 +57,6 @@ class DisplayIdFragment : Fragment(R.layout.fragment_display_store_id) {
         }, {
                 exception -> exception.printStackTrace()
         })
-
-
-
     }
 
 }
