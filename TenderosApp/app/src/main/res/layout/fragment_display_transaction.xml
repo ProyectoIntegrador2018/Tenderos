@@ -90,7 +90,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tittle_tv"
             app:srcCompat="@drawable/arrows" />
-
+        <!--cambiar por constraint layout-->
         <RelativeLayout
             android:id="@+id/relativeLayout2"
             android:layout_width="wrap_content"
@@ -170,6 +170,7 @@
                 android:text="@string/cantidad_dinero" />
 
         </RelativeLayout>
+        <!--cambiar por constraint layout-->
 
         <RelativeLayout
             android:layout_width="wrap_content"

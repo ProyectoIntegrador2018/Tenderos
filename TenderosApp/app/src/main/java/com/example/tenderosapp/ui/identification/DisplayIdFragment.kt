@@ -19,7 +19,9 @@ class DisplayIdFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
+    //Quitar onCreateView  y ver como se hacer en  HOmeFragment
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = inflater.inflate(R.layout.fragment_display_store_id , container, false)
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
