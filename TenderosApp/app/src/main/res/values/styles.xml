@@ -9,7 +9,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">@style/Tenderos.Button</item>
         <item name="android:textSize">16dp</item>
-
+        <item name="android:fontFamily">@font/roboto_condensed_bold</item>
         <item name="android:textColor">@color/tenderos_secondary</item>
         <item name="drawerArrowStyle">@style/BackIconStyle</item>
         <item name="android:textColorPrimary">@color/default_black</item>
