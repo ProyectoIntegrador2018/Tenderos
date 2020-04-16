@@ -1,6 +1,6 @@
 # App Tenderos
 
-Brings small stores a bunch of services that will help them manage their 
+Brings small stores a bunch of services that will help them manage their business with features to control trades, payments and cellphone balance. 
 
 ## Table of contents
 
@@ -45,6 +45,8 @@ Brings small stores a bunch of services that will help them manage their
 | Android Studio | 3.6.1        |
 | Kotlin	     | 1.3.0	    |
 | Android	     | 5.0.0        |
+| JitPack	     | 1.2.0        |
+| Awesome QR     | 1.2.0        |
 
 ### Management tools
 
