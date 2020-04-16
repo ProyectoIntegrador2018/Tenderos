@@ -58,6 +58,15 @@ You should ask for access to this tools if you don't have it already:
 
 ## Development
 
+### Changelog v0.1
+- Added HU002 Display Identification QR functionality
+- Added HU003 Confirm transactions
+
+### Rules of Git
+
+Using a branch for each use case and an extra branch for general development and testing the team will work on an specific part of the project. Each use case branch will be named after the use case code and the general branch will be named development. 
+
+
 ### Setup the project
 
 For this project you will need to install Android studio along with the Android SDK from the API level 21, as optional downloads and for testing purposes download and install any other API level above 21 that you would require. This will be done directly from Android Studio in the Android SDK Manager, by ipressing on the SDK Manager button and ticking the required SDKs.   
