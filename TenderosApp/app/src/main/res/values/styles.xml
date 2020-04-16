@@ -1,0 +1,160 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Widget"></style>
+    <style name="Widget.Tenderos"/>
+
+<!-- BUTTONS -->
+
+    <style name="Widget.Tenderos.Button.Primary" parent="Widget.MaterialComponents.Button.TextButton" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/Tenderos.Button</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:fontFamily">@font/roboto_condensed_bold</item>
+        <item name="android:textColor">@color/tenderos_secondary</item>
+        <item name="drawerArrowStyle">@style/BackIconStyle</item>
+        <item name="android:textColorPrimary">@color/default_black</item>
+        <item name="android:textColorSecondaryInverse">@color/default_black</item>
+        <item name="actionMenuTextColor">@color/default_black</item>
+        <item name="android:ems">12</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:text">@string/next</item>
+        <item name="cornerRadius">0dp</item>
+    </style>
+
+
+    <style name="Widget.Tenderos.Button.Secondary" parent="Widget.MaterialComponents.Button" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/Tenderos.Button</item>
+        <item name="android:textColor">@color/default_white</item>
+        <item name="drawerArrowStyle">@style/BackIconStyle</item>
+        <item name="android:textColorPrimary">@color/default_white</item>
+        <item name="android:textColorSecondaryInverse">@color/default_black</item>
+        <item name="actionMenuTextColor">@color/default_black</item>
+        <item name="android:backgroundTint">@color/tenderos_secondary_dark</item>
+        <item name="android:ems">12</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:text">@string/next</item>
+        <item name="cornerRadius">0dp</item>
+        <item name="colorControlActivated">@color/tenderos_secondary_dark</item>
+    </style>
+
+    <style name="Widget.Tenderos.ImageButton.ExitButton" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
+        <item name="android:layout_width">54dp</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:layout_marginTop">48dp</item>
+
+
+        <item name="android:src">@drawable/outline_close_24</item>
+    </style>
+
+    <style name="Widget.Tenderos.FAB" parent="Widget.MaterialComponents.ExtendedFloatingActionButton" >
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:src">@drawable/codigoqr</item>
+    </style>
+
+
+<!-- TEXTFIELDS -->
+
+    <style name="Widget.Tenderos.TextField.Primary" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:lines">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="hintTextColor">@color/tenderos_secondary_dark</item>
+        <item name="boxStrokeColor">@color/tenderos_secondary_dark</item>
+        <item name="android:textColor">@color/tenderos_secondary_dark</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:textCursorDrawable">@null</item>
+    </style>
+
+
+<!-- TEXTVIEWS -->
+
+    <style name="Widget.Tenderos.TextView.SecondaryTitle" parent="Widget.MaterialComponents.TextView" >
+        <item name="android:fontFamily">@font/quicksand</item>
+        <item name="android:textColor">@color/default_grey</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    <style name="Widget.Tenderos.TextView.PrimaryTitle" parent="Widget.MaterialComponents.TextView" >
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:fontFamily">@font/quicksand</item>
+        <item name="android:textAppearance">@style/Tenderos.H4</item>
+        <item name="android:gravity">left</item>
+        <item name="android:textColor">@color/default_black</item>
+    </style>
+
+    <style name="Widget.Tenderos.TextView.ThirdTitle" parent="Widget.MaterialComponents.TextView" >
+        <item name="android:fontFamily">@font/quicksand</item>
+        <item name="android:textColor">@color/default_lightblack</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Widget.Tenderos.TextView.Message" parent="Widget.MaterialComponents.TextView" >
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <style name="Widget.Tenderos.TextView.regularFont" parent="Widget.MaterialComponents.TextView" >
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/avenir_next</item>
+        <item name="android:textColor">@color/default_darkgrey</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">left</item>
+    </style>
+
+    <style name="Widget.Tenderos.TextView.cellTittles" parent="Widget.MaterialComponents.TextView" >
+        <item name="android:fontFamily">@font/avenir_next</item>
+        <item name="android:textColor">@color/default_darkgrey</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Widget.Tenderos.TextView.cellTittlesBold" parent="Widget.MaterialComponents.TextView" >
+        <item name="android:fontFamily">@font/avenir_next_bold</item>
+        <item name="android:textColor">@color/default_darkgrey</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+
+    <style name="Widget.Tenderos.TextView.PrimaryTitle.End" >
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:gravity">end</item>
+    </style>
+
+
+    <style name="Widget.Tenderos.TextView.PrimaryTitle.Centered" >
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">40dp</item>
+
+    </style>
+
+ <!-- OTHERS -->
+
+    <style name="BackIconStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@color/default_black</item>
+    </style>
+
+    <style name="TanderosToolbar" parent="Widget.MaterialComponents.BottomAppBar.PrimarySurface">
+        <item name="android:itemTextAppearance">@style/menu_item_color</item>
+    </style>
+    <style name="menu_item_color">
+        <item name="android:textColor">@color/default_black</item>
+    </style>
+
+</resources>

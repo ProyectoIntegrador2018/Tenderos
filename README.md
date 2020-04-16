@@ -1,6 +1,6 @@
 # App Tenderos
 
-Brings small stores a bunch of services that will help them manage their financial and inventory assets with services such as national and abroad money transfer, cash withdrawal, virtual wallet management, services payments, the reception of inventory and sales of products.
+Brings small stores a bunch of services that will help them manage their business with features to control trades, payments and cellphone balance. 
 
 ## Table of contents
 
@@ -45,6 +45,8 @@ Brings small stores a bunch of services that will help them manage their financi
 | Android Studio | 3.6.1        |
 | Kotlin	     | 1.3.0	    |
 | Android	     | 5.0.0        |
+| JitPack	     | 1.2.0        |
+| Awesome QR     | 1.2.0        |
 
 ### Management tools
 
@@ -55,6 +57,15 @@ You should ask for access to this tools if you don't have it already:
 * [Documentation](https://drive.google.com/drive/u/0/folders/1LIWhHVsdTVLpmetW2GNYXAYw_jIL3jgw)
 
 ## Development
+
+### Changelog v0.1
+- Added HU002 Display Identification QR functionality
+- Added HU003 Confirm transactions
+
+### Rules of Git
+
+Using a branch for each use case and an extra branch for general development and testing the team will work on an specific part of the project. Each use case branch will be named after the use case code and the general branch will be named development. 
+
 
 ### Setup the project
 

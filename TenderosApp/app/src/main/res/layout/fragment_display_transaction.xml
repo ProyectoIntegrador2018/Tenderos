@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tittle_tv"
+            style="@style/Widget.Tenderos.TextView.ThirdTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/tittle_display_transaction"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayoutBusiness"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@+id/arrows_iv"
+            app:layout_constraintTop_toBottomOf="@+id/tittle_tv">
+
+            <ImageView
+                android:id="@+id/store_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/user" />
+
+            <TextView
+                android:id="@+id/store_tv"
+                style="@style/Widget.Tenderos.TextView.regularFont"
+                android:gravity="center"
+                android:text="@string/business_name"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/store_iv" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayoutStore"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@+id/arrows_iv"
+            app:layout_constraintTop_toBottomOf="@+id/tittle_tv">
+
+            <ImageView
+                android:id="@+id/business_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/user" />
+
+            <TextView
+                android:id="@+id/business_tv"
+                style="@style/Widget.Tenderos.TextView.regularFont"
+                android:gravity="center"
+                android:text="@string/store_name"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/business_iv" />
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/arrows_iv"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tittle_tv"
+            app:srcCompat="@drawable/arrows" />
+        <!--cambiar por constraint layout-->
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:orientation="vertical"
+            android:paddingLeft="56dp"
+            android:paddingRight="56dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/arrows_iv">
+
+
+            <TextView
+                android:id="@+id/saldo_anterior_tv"
+                style="@style/Widget.Tenderos.TextView.regularFont"
+                android:layout_alignParentLeft="true"
+                android:text="@string/saldo_anterior_label" />
+
+            <TextView
+                android:id="@+id/saldo_anterior_qty"
+                style="@style/Widget.Tenderos.TextView.regularFont"
+                android:layout_alignParentRight="true"
+                android:fontFamily="@font/avenir_next_heavy"
+                android:text="@string/cantidad_dinero" />
+
+            <TextView
+                android:id="@+id/total_tv"
+                style="@style/Widget.Tenderos.TextView.regularFont"
+                android:layout_below="@+id/saldo_anterior_tv"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="8dp"
+                android:text="@string/total_label" />
+
+            <TextView
+                android:id="@+id/total_qty"
+                style="@style/Widget.Tenderos.TextView.regularFont"
+                android:layout_below="@id/saldo_anterior_qty"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/avenir_next_heavy"
+                android:text="@string/cantidad_dinero" />
+
+            <TextView
+                android:id="@+id/pago_tv"
+                style="@style/Widget.Tenderos.TextView.regularFont"
+                android:layout_below="@+id/total_tv"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="8dp"
+                android:text="@string/pago_label" />
+
+            <TextView
+                android:id="@+id/pago_qty"
+                style="@style/Widget.Tenderos.TextView.regularFont"
+                android:layout_below="@id/total_qty"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/avenir_next_heavy"
+                android:text="@string/cantidad_dinero" />
+
+            <TextView
+                android:id="@+id/saldo_nuevo_tv"
+                style="@style/Widget.Tenderos.TextView.regularFont"
+                android:layout_below="@+id/pago_tv"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="8dp"
+                android:text="@string/saldo_nuevo_label" />
+
+            <TextView
+                android:id="@+id/saldo_nuevo_qty"
+                style="@style/Widget.Tenderos.TextView.regularFont"
+                android:layout_below="@id/pago_qty"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/avenir_next_heavy"
+                android:text="@string/cantidad_dinero" />
+
+        </RelativeLayout>
+        <!--cambiar por constraint layout-->
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:paddingLeft="56dp"
+            android:paddingRight="56dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
+
+            <LinearLayout
+                android:id="@+id/tittles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/producto_tv"
+                    style="@style/Widget.Tenderos.TextView.cellTittlesBold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/regresado_tv"
+                    style="@style/Widget.Tenderos.TextView.cellTittlesBold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/entregado_label" />
+
+                <TextView
+                    android:id="@+id/entregado_tv"
+                    style="@style/Widget.Tenderos.TextView.cellTittlesBold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/regresado_label" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tittles"
+                android:scrollbars="vertical" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/continue_button"
+                android:text="@string/continue_button"
+                android:layout_below="@id/recyclerview"
+                app:shapeAppearanceOverlay="@style/CustomSmallShapeAppearance"
+                style="@style/Widget.Tenderos.Button.Primary"
+                android:layout_margin="32dp" />
+
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

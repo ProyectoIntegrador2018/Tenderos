@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">TenderosApp</string>
+    <string name="login_hint">Tenderos Hint</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="first_title">Compra de Tiempo Aire</string>
+    <string name="next">Siguiente</string>
+    <string name="login_text">Bienvenido</string>
+    <string name="login_email">Correo electrónico</string>
+    <string name="login_password">Contraseña</string>
+    <string name="login_button">INGRESAR</string>
+    <string name="continue_button">CONTINUAR</string>
+    <string name="nombre_tienda">NombreTienda</string>
+    <string name="confirmacion_trans">Confirma transacción</string>
+    <string name="servicios">Servicios</string>
+    <string name="nombre_servicio">Servicio</string>
+    <string name="qrcode_message">Muestra este código a tu repartidor</string>
+    <string name="tittle_display_transaction">Resumen de transacción</string>
+    <string name="store_name">StoreName</string>
+    <string name="business_name">BusinessName</string>
+    <string name="saldo_anterior_label">Saldo anterior</string>
+    <string name="saldo_nuevo_label">Saldo nuevo</string>
+    <string name="total_label">Total de venta</string>
+    <string name="pago_label">Pago</string>
+    <string name="regresado_label">Regresado</string>
+    <string name="entregado_label">Entregado</string>
+    <string name="cantidad_dinero">$000.00</string>
+    <string name="default_value">0</string>
+    <string name="nombre_producto">NombreProducto</string>
+
+</resources>

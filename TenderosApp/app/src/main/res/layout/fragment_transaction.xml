@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundconfirmacion"
+    tools:context=".ui.home.HomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/title_tv"
+        style="@style/Widget.Tenderos.TextView.SecondaryTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="82dp"
+        android:layout_marginTop="144dp"
+        android:text="@string/confirmacion_trans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/exitbutton_ib"
+        style="@style/Widget.Tenderos.ImageButton.ExitButton"
+        app:fabSize="mini"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        app:elevation="4dp"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/default_white"
+        android:tint="@color/default_white"
+        android:backgroundTint="@color/default_white"/>
+
+    <ImageView
+        android:id="@+id/qrcode_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:src="@drawable/dummyqr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_tv" />
+
+    <TextView
+        android:id="@+id/qrcode_msg"
+        style="@style/Widget.Tenderos.TextView.Message"
+        android:text="@string/qrcode_message"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/qrcode_iv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@drawable/gradient_background"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title_tv"
+        style="@style/Widget.Tenderos.TextView.PrimaryTitle"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="33dp"
+        android:text="@string/servicios"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/readqr_main_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:tint="@null"
+        app:fabSize="normal"
+        app:backgroundTint="@color/default_white"
+        app:srcCompat="@drawable/ic_qrcode_white_24dp"
+        android:tint="@color/default_white"
+        android:backgroundTint="@color/tenderos_secondary"
+        app:layout_anchor="@id/toolbar_main_tb"/>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/toolbar_main_tb"
+        app:elevation="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:fabAlignmentMode="end"
+        app:hideOnScroll="true"
+        android:backgroundTint="@android:color/transparent"
+        android:layout_gravity="bottom"
+        android:theme="@style/TanderosToolbar"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
