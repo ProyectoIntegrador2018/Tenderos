@@ -1,8 +1,11 @@
 package com.example.tenderosapp.data.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.tenderosapp.data.Repository.PagofonRepository
+import com.example.tenderosapp.model.response.BalanceResponse
+import com.example.tenderosapp.model.response.Encoded64Response
 
 class MainViewModel : ViewModel() {
 
@@ -21,4 +24,9 @@ class MainViewModel : ViewModel() {
         pagofonRepository = PagofonRepository.getInstance()
 
     }
+
+    fun getBalance(): LiveData<BalanceResponse?> = pagofonRepository.getBalance()
+
+    fun queryGetBalance() = pagofonRepository.queryGetBalance()
+
 }

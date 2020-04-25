@@ -1,4 +1,4 @@
-package com.example.tenderosapp;
+package com.example.tenderosapp.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,18 +25,25 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-public class pagofonAPI {
+public class sampleAPI {
+
+	/*
+	*
+	* PLEASE DO NOT USE THIS CLASS,THIS IS ONLY A CLASS EXAM?LE
+	* The real class used for encrypt/decript is:  "util/Encrypter"
+	* And the the http connection is: All the "network" package
+	*
+	* */
 
 	public static void main(String[] args) {
 		String Activation_Code = "1169325819";
 		String Encryption_key = "lz3M0IH4swwYCR/vcOqXPg==";
 		String Sign_Key = "lz3M0IH4swwYCR/vcOqXPg==";
 		String RequestUniqueID="3456673745482112";
-		
 		String data = "{\"MethodName\":\"GetBalance\",\"ActivationCode\":\""+Activation_Code+"\",\"RequestUniqueID\":\""+RequestUniqueID+"\",\"RequestIP\":\"189.213.47.65\"}";
 
         System.out.println("Cadena: "+data);
-        pagofonAPI class1 = new pagofonAPI();
+        sampleAPI class1 = new sampleAPI();
   		String datos_post= Base64.encodeToString(class1.encrypt(Encryption_key, Sign_Key, data.getBytes()),Base64.DEFAULT) ; //This line was fixed byhttps://stackoverflow.com/a/28426808/5319007
 		System.out.println("Cadena cifrada: "+datos_post);
 		String data_response="";
@@ -44,7 +51,6 @@ public class pagofonAPI {
 		
 		try {
 			System.out.println("Inicia peticion API");
-			
 			data_response = send (Activation_Code, datos_post);   //URL CONNECT
 			System.out.println("Termina consumir API");
 			System.out.println("Response API: "+data_response);
@@ -57,10 +63,8 @@ public class pagofonAPI {
 			byte[] encodedKey     = Base64.decode(data_cipher.getBytes(), Base64.DEFAULT);
 			String response_clear = new String(class1.decrypt(Encryption_key, Sign_Key, encodedKey));
 			System.out.println("Respuesta API descifrada: "+response_clear);
-		    
 
 		} catch (Exception e) {
-			
 			e.printStackTrace();
 		}
 				

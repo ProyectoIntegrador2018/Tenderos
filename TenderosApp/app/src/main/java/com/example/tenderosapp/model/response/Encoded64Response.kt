@@ -6,14 +6,14 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class GetBalanceResponse(
+data class Encoded64Response(
     @SerializedName("AccessID")
     @Expose
-    var accessID: String? = null,
+    var accessID: String?,
 
     @SerializedName("RequestUniqueID")
     @Expose
-    var requestUniqueID: String? = null,
+    var requestUniqueID: String?,
 
     @SerializedName("Data")
     @Expose

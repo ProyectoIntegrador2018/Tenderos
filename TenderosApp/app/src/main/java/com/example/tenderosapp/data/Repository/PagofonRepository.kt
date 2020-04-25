@@ -1,58 +1,34 @@
 package com.example.tenderosapp.data.Repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.tenderosapp.model.response.GetBalanceResponse
-import com.example.tenderosapp.network.ApiServiceGenerator
-import com.example.tenderosapp.network.endpoints.PagofonApi
-import kotlinx.coroutines.*
-import retrofit2.Response
-import java.util.concurrent.TimeoutException
+import com.example.tenderosapp.data.client.PagoFonClient
+import com.example.tenderosapp.model.response.BalanceResponse
+import com.example.tenderosapp.model.response.Encoded64Response
 
 //Singleton
-class PagofonRepository private constructor() {
-    var pagofonApi: PagofonApi
-    private val pagofonRepository: PagofonRepository
-    var getBalanceResponse: MutableLiveData<GetBalanceResponse?>
+class PagofonRepository {
+    private val pagofonClient : PagoFonClient
+    var encoded64Response: MutableLiveData<Encoded64Response?>
 
     init {
-        pagofonRepository = getInstance()
-        getBalanceResponse = MutableLiveData()
-        pagofonApi = ApiServiceGenerator.pagoPhonEndPoint
+        pagofonClient = PagoFonClient.getInstance()
+        encoded64Response = MutableLiveData()
     }
 
     companion object {
         private var instance: PagofonRepository? = null
         fun getInstance(): PagofonRepository {
             if (instance == null) {
-                instance =
-                    PagofonRepository()
+                instance = PagofonRepository()
             }
             return instance as PagofonRepository
         }
     }
 
-    fun getBalance(): LiveData<GetBalanceResponse?> = getBalanceResponse
+    fun getBalance(): LiveData<BalanceResponse?> = pagofonClient.getBalance()
 
-    fun queryGetBalance(data:String, activationCode:String)
-        = GlobalScope.launch(Dispatchers.Main) {
-            val job: Job = launch {
-                val getBalanceResponseResponse: Response<GetBalanceResponse>
-                        = retieveBalance(data,activationCode)
-                if(getBalanceResponseResponse.isSuccessful){
-                    getBalanceResponse.postValue(getBalanceResponseResponse.body())
-                }
-            }
-            job.join()
-    }
+    fun queryGetBalance() = pagofonClient.queryGetBalance()
 
-
-
-    suspend fun retieveBalance(data:String, activationCode:String): Response<GetBalanceResponse>
-            = pagofonApi.getBalance(
-        data = data,
-        activationCode = activationCode
-    )
 
 }

@@ -36,8 +36,23 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", 'PAGOFON_BASE_URL', "\"https://URL/\""
+            buildConfigField "String", 'PAGOFON_BASE_URL', "\"https://mw-uat.pagofon.net/\""
+            buildConfigField "String", 'ACTIVATION_CODE', "\"1169325819\""
+            buildConfigField "String", 'ENCRYPTION_KEY', "\"lz3M0IH4swwYCR/vcOqXPg==\""
+            buildConfigField "String", 'SIGN_KEY', "\"lz3M0IH4swwYCR/vcOqXPg==\""
+            buildConfigField "String", 'REQUEST_UNIQUE_ID', "\"3456673745482112\""
+            buildConfigField "String", 'REQUEST_IP', "\"189.213.47.65\""
 
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", 'PAGOFON_BASE_URL', "\"https://mw-uat.pagofon.net/\""
+            buildConfigField "String", 'ACTIVATION_CODE', "\"1169325819\""
+            buildConfigField "String", 'ENCRYPTION_KEY', "\"lz3M0IH4swwYCR/vcOqXPg==\""
+            buildConfigField "String", 'SIGN_KEY', "\"lz3M0IH4swwYCR/vcOqXPg==\""
+            buildConfigField "String", 'REQUEST_UNIQUE_ID', "\"3456673745482112\""
+            buildConfigField "String", 'REQUEST_IP', "\"189.213.47.65\""
         }
     }
 

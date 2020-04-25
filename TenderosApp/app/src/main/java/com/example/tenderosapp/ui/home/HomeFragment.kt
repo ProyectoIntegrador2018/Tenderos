@@ -46,7 +46,6 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                     val scanResult =
                         IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
                     if (scanResult != null) {
-                        Log.d("Holi2", scanResult.contents)
                         val gson = Gson()
                         try {
                             val convertedTransaction: Transaction =
@@ -70,7 +69,11 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_show_id -> (context as MainActivity).navController.navigate(R.id.action_mainFragment_to_displayIdFragment)
-            R.id.action_show_settings -> Toast.makeText(context, "Settings selected", Toast.LENGTH_SHORT).show()
+            R.id.action_show_settings ->{
+                Toast.makeText(context, "Settings selected", Toast.LENGTH_SHORT).show()
+                viewModel.queryGetBalance()
+
+            }
         }
         return super.onOptionsItemSelected(item)
     }
