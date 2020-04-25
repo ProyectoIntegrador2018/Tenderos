@@ -1,4 +1,4 @@
-
+package com.example.tenderosapp;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,8 +19,8 @@ import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import android.util.Base64;
 
-import org.apache.commons.codec.binary.Base64;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -28,8 +28,6 @@ import com.google.gson.JsonParser;
 public class pagofonAPI {
 
 	public static void main(String[] args) {
-		
-		
 		String Activation_Code = "1169325819";
 		String Encryption_key = "lz3M0IH4swwYCR/vcOqXPg==";
 		String Sign_Key = "lz3M0IH4swwYCR/vcOqXPg==";
@@ -39,7 +37,7 @@ public class pagofonAPI {
 
         System.out.println("Cadena: "+data);
         pagofonAPI class1 = new pagofonAPI();
-		String datos_post= Base64.encodeBase64String(class1.encrypt(Encryption_key, Sign_Key, data.getBytes())) ;
+  		String datos_post= Base64.encodeToString(class1.encrypt(Encryption_key, Sign_Key, data.getBytes()),Base64.DEFAULT) ; //This line was fixed byhttps://stackoverflow.com/a/28426808/5319007
 		System.out.println("Cadena cifrada: "+datos_post);
 		String data_response="";
 		JsonParser parser = new JsonParser();
@@ -55,8 +53,9 @@ public class pagofonAPI {
 			JsonObject jsonObject = jsonTree.getAsJsonObject();    
 			// GET DATA of JSON
 			String data_cipher = jsonObject.get("Data").getAsString(); 
-			// Respuesta en claro a utilizar. 
-			String response_clear = new String(class1.decrypt(Encryption_key, Sign_Key, Base64.decodeBase64( data_cipher.getBytes() ) ));
+			// Respuesta en claro a utilizar.
+			byte[] encodedKey     = Base64.decode(data_cipher.getBytes(), Base64.DEFAULT);
+			String response_clear = new String(class1.decrypt(Encryption_key, Sign_Key, encodedKey));
 			System.out.println("Respuesta API descifrada: "+response_clear);
 		    
 
@@ -71,8 +70,11 @@ public class pagofonAPI {
         byte [] encodeData = null;
     	try {	
     		Cipher AES_CIPHER = Cipher.getInstance("AES/CBC/PKCS5Padding");
-    		
-			SecretKey secretKey = (SecretKey) generateSecretKey(Base64.decodeBase64(aesKey));
+
+    		//Process Changed https://stackoverflow.com/a/12039611/5319007
+			byte[] encodedKey     = Base64.decode(aesKey, Base64.DEFAULT);
+			SecretKey secretKey = new SecretKeySpec(encodedKey, 0, encodedKey.length, "AES");
+
     		if(secretKey == null){
     			return null;
     		}
@@ -117,7 +119,8 @@ public class pagofonAPI {
 	public byte[] sign(String hmacKey, byte[] data) {
         byte [] signData = null;
     	try {
-    		SecretKey signingKey = generateHMAC(Base64.decodeBase64(hmacKey));
+			byte[] encodedKey     = Base64.decode(hmacKey, Base64.DEFAULT);
+			SecretKey signingKey = generateHMAC(encodedKey);
             if(signingKey == null){
             	return null;
             }
@@ -143,8 +146,9 @@ public class pagofonAPI {
 	        if (!verifySignature(hmacKey, sentSignature, encryptedMessage)){
 	            return decryptByte;
 	        }
-	        
-	        SecretKey secretKey = (SecretKey) generateSecretKey(Base64.decodeBase64(aesKey));
+
+			byte[] encodedKey = Base64.decode(aesKey, Base64.DEFAULT);
+			SecretKey secretKey = (SecretKey) generateSecretKey(encodedKey);
 	        if(secretKey == null){
 	        	return decryptByte;
 	        }
@@ -161,7 +165,8 @@ public class pagofonAPI {
 
 	private boolean verifySignature(String hmacKey, byte[] sentSignature, byte[] data) {
     	try {
-    		SecretKey signingKey = generateHMAC(Base64.decodeBase64(hmacKey));
+			byte[] encodedKey = Base64.decode(hmacKey, Base64.DEFAULT);
+			SecretKey signingKey = generateHMAC(encodedKey);
             if(signingKey == null){
             	return false;
             }

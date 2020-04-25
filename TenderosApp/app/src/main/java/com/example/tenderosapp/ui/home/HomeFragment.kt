@@ -6,19 +6,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
-import android.widget.GridView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
 import com.example.tenderosapp.MainActivity
 import com.example.tenderosapp.R
 import com.example.tenderosapp.model.Transaction
-import com.example.tenderosapp.ui.transaction.TransactionFragment
-import com.example.tenderosapp.viewmodel.MainViewModel
+import com.example.tenderosapp.data.viewmodel.MainViewModel
 import com.google.gson.Gson
 import com.google.zxing.integration.android.IntentIntegrator
-import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.home_fragment.*
 import java.lang.Exception
 
