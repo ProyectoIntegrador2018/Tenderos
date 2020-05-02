@@ -1,13 +1,16 @@
 package com.example.tenderosapp.ui.login
 
+import android.app.Activity
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
+import android.view.View
 
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 
 import com.example.tenderosapp.R
 import com.google.firebase.auth.FirebaseAuth
@@ -18,33 +21,33 @@ import kotlinx.android.synthetic.main.fragment_login.*
  * A simple [Fragment] subclass.
  */
 class LoginFragment :  Fragment(R.layout.fragment_login) {
-
     private lateinit var auth: FirebaseAuth
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         auth = FirebaseAuth.getInstance()
-        login_button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_mainFragment))
-        //login_button.setOnClickListener{
-
-            Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_mainFragment)
+        login_button.setOnClickListener{
             //doSignUp()
-        //}
+            doLogin()
+        }
     }
     public override fun onStart() {
         super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
+        //Al iniciar la aplicación revisamos si tenemos ya un usuario usuario activo
         val currentUser = auth.currentUser
-
-        updateUI(currentUser)
+        //updateUI(currentUser)
     }
+    //Actualizar la navegación si el usuario es iudentificado correctamente
     fun updateUI(currentUser: FirebaseUser?){
         if(currentUser != null) {
+            Navigation.findNavController(login_button).navigate(R.id.action_loginFragment_to_mainFragment)
             Toast.makeText(this.context, "Bienvenido.",Toast.LENGTH_LONG).show()
             Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_mainFragment)
         } else {
             Toast.makeText( this.context, "Usuario no identificado.",Toast.LENGTH_LONG).show()
         }
     }
+
+
     private fun doLogin() {
         Toast.makeText(this.context, email_tf.text.toString(),Toast.LENGTH_LONG).show()
 
@@ -66,7 +69,7 @@ class LoginFragment :  Fragment(R.layout.fragment_login) {
             return
         }
 
-        auth.signInWithEmailAndPassword(email_tf.toString(), psswd_layout.toString())
+        auth.signInWithEmailAndPassword(email_tf.text.toString(), psswd_tf.text.toString())
             .addOnCompleteListener() { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
@@ -78,26 +81,27 @@ class LoginFragment :  Fragment(R.layout.fragment_login) {
 
     }
 
+
+    //Crear Cuenta
     private fun doSignUp() {
         auth.createUserWithEmailAndPassword(email_tf.text.toString(), psswd_tf.text.toString())
             .addOnCompleteListener() { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
+                    // Exito, hacer login al nuevo usuario
                     Log.d(TAG, "createUserWithEmail:success")
-                    Toast.makeText(this.context, "User Created",
+                    Toast.makeText(this.context, "Usuario Creado",
                         Toast.LENGTH_LONG).show()
                     val user = auth.currentUser
                     if(user != null){
                         updateUI(user)
                     } else {
-                        Toast.makeText(this.context, "error al crear usuario: usuario nulo",
-                            Toast.LENGTH_LONG).show()
+                        Toast.makeText(this.context, "Error al Crear usuario", Toast.LENGTH_LONG).show()
                     }
 
                 } else {
-                    // If sign in fails, display a message to the user.
+                    // Error al Crear usuario
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(this.context, "Authentication failed.",
+                    Toast.makeText(this.context, "Error al crear usuario.",
                         Toast.LENGTH_LONG).show()
                     updateUI(null)
                 }
