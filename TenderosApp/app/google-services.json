@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "840526696498",
+    "firebase_url": "https://tenderos-86ace.firebaseio.com",
+    "project_id": "tenderos-86ace",
+    "storage_bucket": "tenderos-86ace.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840526696498:android:d3c6f00d53219016a42c2b",
+        "android_client_info": {
+          "package_name": "com.example.tenderosapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "840526696498-5koesneq7djsddvpgmqa03hap49e1aii.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tenderosapp",
+            "certificate_hash": "33abdfbec33a35745b270f7d2d79ff7a7cff9f05"
+          }
+        },
+        {
+          "client_id": "840526696498-4cthno1m0t69utaumu52kb65kgek3qcj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdolAflWVgD3aJiH45K6QCcSJfJ410k1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "840526696498-4cthno1m0t69utaumu52kb65kgek3qcj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
