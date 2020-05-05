@@ -1,4 +1,4 @@
-package com.example.tenderosapp.data.Repository
+package com.example.tenderosapp.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

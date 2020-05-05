@@ -26,7 +26,9 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+
         toolbar_main_tb.inflateMenu(R.menu.toolbar_items)
+
         toolbar_main_tb.setOnMenuItemClickListener {
             onOptionsItemSelected(it)
         }

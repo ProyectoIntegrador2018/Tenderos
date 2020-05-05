@@ -42,8 +42,8 @@ class PagoFonClient {
             activationCode = BuildConfig.ACTIVATION_CODE,
             requestIP = BuildConfig.REQUEST_IP,
             requestUniqueID = BuildConfig.REQUEST_UNIQUE_ID,
-            methodName = "GetBalance"
-        )
+            methodName = "GetBalance")
+        
         val job: Job = launch {
             val encoded64ResponseResponse: Response<Encoded64Response> = retieveBalance(dataEncoded, BuildConfig.ACTIVATION_CODE)
             if(encoded64ResponseResponse.isSuccessful){

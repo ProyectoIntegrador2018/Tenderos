@@ -3,9 +3,8 @@ package com.example.tenderosapp.data.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.tenderosapp.data.Repository.PagofonRepository
+import com.example.tenderosapp.data.repository.PagofonRepository
 import com.example.tenderosapp.model.response.BalanceResponse
-import com.example.tenderosapp.model.response.Encoded64Response
 
 class MainViewModel : ViewModel() {
 
