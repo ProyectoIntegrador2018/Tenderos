@@ -9,6 +9,7 @@ import android.view.View
 
 import androidx.fragment.app.Fragment
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 
@@ -17,14 +18,16 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.fragment_login.*
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class LoginFragment :  Fragment(R.layout.fragment_login) {
     private lateinit var auth: FirebaseAuth
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         auth = FirebaseAuth.getInstance()
+
+        requireActivity().onBackPressedDispatcher.addCallback {}
+
         login_button.setOnClickListener{
             //doSignUp()
             doLogin()
@@ -32,16 +35,15 @@ class LoginFragment :  Fragment(R.layout.fragment_login) {
     }
     public override fun onStart() {
         super.onStart()
-        //Al iniciar la aplicación revisamos si tenemos ya un usuario usuario activo
-        val currentUser = auth.currentUser
-        //updateUI(currentUser)
+        updateUI(auth.currentUser)
     }
+
     //Actualizar la navegación si el usuario es iudentificado correctamente
     fun updateUI(currentUser: FirebaseUser?){
         if(currentUser != null) {
-            Navigation.findNavController(login_button).navigate(R.id.action_loginFragment_to_mainFragment)
+            Navigation.findNavController(login_button).popBackStack()
+            //action_loginFragment_to_mainFragment
             Toast.makeText(this.context, "Bienvenido.",Toast.LENGTH_LONG).show()
-            Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_mainFragment)
         } else {
             Toast.makeText( this.context, "Usuario no identificado.",Toast.LENGTH_LONG).show()
         }

@@ -5,23 +5,41 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import com.example.tenderosapp.MainActivity
 import com.example.tenderosapp.R
 import com.example.tenderosapp.model.Transaction
 import com.example.tenderosapp.data.viewmodel.MainViewModel
+import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import com.google.zxing.integration.android.IntentIntegrator
+import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.home_fragment.*
 import java.lang.Exception
 
 
 class HomeFragment : Fragment(R.layout.home_fragment) {
-
+    private lateinit var auth: FirebaseAuth
     private lateinit var viewModel: MainViewModel
+
+    public override fun onStart() {
+        super.onStart()
+        auth = FirebaseAuth.getInstance()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        auth = FirebaseAuth.getInstance()
+
+        if(auth.currentUser == null){
+            Navigation.findNavController(view).navigate(R.id.action_home_fragment_to_fragment_login)
+        }
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
