@@ -46,7 +46,6 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
         toolbar_main_tb.inflateMenu(R.menu.toolbar_items)
-
         toolbar_main_tb.setOnMenuItemClickListener {
             onOptionsItemSelected(it)
         }
