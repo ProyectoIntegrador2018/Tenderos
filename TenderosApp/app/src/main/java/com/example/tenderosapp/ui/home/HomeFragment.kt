@@ -5,8 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
-import android.widget.GridView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -14,8 +14,8 @@ import androidx.navigation.Navigation
 import com.example.tenderosapp.MainActivity
 import com.example.tenderosapp.R
 import com.example.tenderosapp.model.Transaction
-import com.example.tenderosapp.ui.transaction.TransactionFragment
-import com.example.tenderosapp.viewmodel.MainViewModel
+import com.example.tenderosapp.data.viewmodel.MainViewModel
+import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -24,12 +24,27 @@ import java.lang.Exception
 
 
 class HomeFragment : Fragment(R.layout.home_fragment) {
-
+    private lateinit var auth: FirebaseAuth
     private lateinit var viewModel: MainViewModel
+
+    public override fun onStart() {
+        super.onStart()
+        auth = FirebaseAuth.getInstance()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        auth = FirebaseAuth.getInstance()
+
+        if(auth.currentUser == null){
+            Navigation.findNavController(view).navigate(R.id.action_home_fragment_to_fragment_login)
+        }
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+
         toolbar_main_tb.inflateMenu(R.menu.toolbar_items)
         toolbar_main_tb.setOnMenuItemClickListener {
             onOptionsItemSelected(it)
@@ -50,7 +65,6 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                     val scanResult =
                         IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
                     if (scanResult != null) {
-                        Log.d("Holi2", scanResult.contents)
                         val gson = Gson()
                         try {
                             val convertedTransaction: Transaction =
@@ -74,7 +88,11 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_show_id -> (context as MainActivity).navController.navigate(R.id.action_mainFragment_to_displayIdFragment)
-            R.id.action_show_settings -> Toast.makeText(context, "Settings selected", Toast.LENGTH_SHORT).show()
+            R.id.action_show_settings ->{
+                Toast.makeText(context, "Settings selected", Toast.LENGTH_SHORT).show()
+                viewModel.queryGetBalance()
+
+            }
         }
         return super.onOptionsItemSelected(item)
     }

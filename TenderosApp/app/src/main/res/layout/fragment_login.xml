@@ -42,34 +42,36 @@
                 android:src="@color/tenderos_secondary" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/email_tf"
-                app:shapeAppearanceOverlay="@style/CustomSmallShapeAppearance"
+                android:id="@+id/email_layout"
                 style="@style/Widget.Tenderos.TextField.Primary"
-                android:hint="@string/login_email">
+                android:hint="@string/login_email"
+                app:shapeAppearanceOverlay="@style/CustomSmallShapeAppearance">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email_tf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:lines="1"
                     android:inputType="textEmailAddress"
+                    android:lines="1"
+                    android:singleLine="true"
                     app:layout_constraintTop_toBottomOf="@+id/title_tv" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/psswd_tf"
+                android:id="@+id/psswd_layout"
                 app:shapeAppearanceOverlay="@style/CustomSmallShapeAppearance"
                 style="@style/Widget.Tenderos.TextField.Primary"
                 android:layout_marginTop="8dp"
                 android:hint="@string/login_password">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/psswd_tf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:singleLine="true"
-                    android:lines="1"/>
+                    android:lines="1"
+                    android:singleLine="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
