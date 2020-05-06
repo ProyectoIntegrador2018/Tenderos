@@ -47,6 +47,7 @@ Brings small stores a bunch of services that will help them manage their busines
 | Android	     | 5.0.0        |
 | JitPack	     | 1.2.0        |
 | Awesome QR     | 1.2.0        |
+| Firebase Auth	 | 19.3.1		|
 
 ### Management tools
 
@@ -58,7 +59,11 @@ You should ask for access to this tools if you don't have it already:
 
 ## Development
 
-### Changelog v0.1
+### Changelog v0.2 - Authentication Update
+- Added HU001 Login, Signup and Logout
+- You can now create and access an accound using email and password
+
+### Changelog v0.1 - Identification & Transactions Update 
 - Added HU002 Display Identification QR functionality
 - Added HU003 Confirm transactions
 
@@ -84,6 +89,7 @@ $ git clone https://github.com/ProyectoIntegrador2018/tenderos.git
 3. Click on Create a New Virtual Device and choose a phone template from the list and click on next. 
 
 4. Select a system image for your virtual device, click on download and then on Finish.
+Be sure to use a virtual machine or device with google services (Google Play) to be able to run the app. This is very important as is a requirement for Firebase. 
 
 You now have your setup ready to open and run the project. 
 
