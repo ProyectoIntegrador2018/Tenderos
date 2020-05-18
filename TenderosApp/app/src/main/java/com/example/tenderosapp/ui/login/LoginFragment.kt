@@ -83,10 +83,5 @@ class LoginFragment :  Fragment(R.layout.fragment_login) {
                     updateUI(null)
                 }
             }
-
     }
-
-
-
-
 }
