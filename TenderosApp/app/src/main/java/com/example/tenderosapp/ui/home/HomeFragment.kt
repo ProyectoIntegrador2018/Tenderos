@@ -89,7 +89,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_show_id -> (context as MainActivity).navController.navigate(R.id.action_mainFragment_to_displayIdFragment)
-            R.id.action_show_settings ->{
+            R.id.action_show_logout ->{
                 Toast.makeText(context, "Cerando Sesión", Toast.LENGTH_SHORT).show()
                 auth.signOut()
                 Navigation.findNavController(view!!).navigate(R.id.action_home_fragment_to_fragment_login)
