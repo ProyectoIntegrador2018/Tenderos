@@ -28,8 +28,11 @@ class LoginFragment :  Fragment(R.layout.fragment_login) {
 
         requireActivity().onBackPressedDispatcher.addCallback {}
 
+        login_register.setOnClickListener{
+            Navigation.findNavController(it).navigate(R.id.action_fragment_login_to_registerFragment)
+        }
+
         login_button.setOnClickListener{
-            //doSignUp()
             doLogin()
         }
     }
@@ -84,31 +87,6 @@ class LoginFragment :  Fragment(R.layout.fragment_login) {
     }
 
 
-    //Crear Cuenta
-    private fun doSignUp() {
-        auth.createUserWithEmailAndPassword(email_tf.text.toString(), psswd_tf.text.toString())
-            .addOnCompleteListener() { task ->
-                if (task.isSuccessful) {
-                    // Exito, hacer login al nuevo usuario
-                    Log.d(TAG, "createUserWithEmail:success")
-                    Toast.makeText(this.context, "Usuario Creado",
-                        Toast.LENGTH_LONG).show()
-                    val user = auth.currentUser
-                    if(user != null){
-                        updateUI(user)
-                    } else {
-                        Toast.makeText(this.context, "Error al Crear usuario", Toast.LENGTH_LONG).show()
-                    }
 
-                } else {
-                    // Error al Crear usuario
-                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(this.context, "Error al crear usuario.",
-                        Toast.LENGTH_LONG).show()
-                    updateUI(null)
-                }
-            }
-
-    }
 
 }

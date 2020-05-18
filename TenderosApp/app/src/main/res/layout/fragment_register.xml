@@ -40,16 +40,16 @@
                 android:textAlignment="center"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="48dp"
-                android:text="App Tenderos"
+                android:text="Registro"
                 android:src="@color/tenderos_secondary"/>
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/email_layout"
+                android:id="@+id/register_email_layout"
                 style="@style/Widget.Tenderos.TextField.Primary"
-                android:hint="@string/login_email"
+                android:hint="Correo electrónico"
                 app:shapeAppearanceOverlay="@style/CustomSmallShapeAppearance">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/email_tf"
+                    android:id="@+id/register_email_tf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
@@ -60,14 +60,31 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/psswd_layout"
+                android:id="@+id/register_psswd_layout"
                 app:shapeAppearanceOverlay="@style/CustomSmallShapeAppearance"
                 style="@style/Widget.Tenderos.TextField.Primary"
                 android:layout_marginTop="8dp"
-                android:hint="@string/login_password">
+                android:hint="Contraseña">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/psswd_tf"
+                    android:id="@+id/register_psswd_tf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:lines="1"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/register_confPsswd_layout"
+                app:shapeAppearanceOverlay="@style/CustomSmallShapeAppearance"
+                style="@style/Widget.Tenderos.TextField.Primary"
+                android:layout_marginTop="8dp"
+                android:hint="Contraseña">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/register_confPsswd_tf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -77,8 +94,8 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/login_button"
-                android:text="Iniciar Sesión"
+                android:id="@+id/register_register_btn"
+                android:text="Registrarme"
                 android:textAllCaps="false"
                 app:shapeAppearanceOverlay="@style/CustomSmallShapeAppearance"
                 style="@style/Widget.Tenderos.Button.Primary"
@@ -89,8 +106,8 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/login_register"
-        android:text="Quiero registrarme"
+        android:id="@+id/register_home_btn"
+        android:text="Regresar al Inicio"
         android:textAllCaps="false"
         app:shapeAppearanceOverlay="@style/CustomSmallShapeAppearance"
         style="@style/Widget.Tenderos.Button.Primary"

@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_fragment_login_to_home_fragment"
             app:destination="@id/home_fragment" />
+        <action
+            android:id="@+id/action_fragment_login_to_registerFragment"
+            app:destination="@id/registerFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragment_transaction"
@@ -51,6 +54,11 @@
             app:destination="@id/fragment_transaction" />
 
     </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.tenderosapp.ui.login.RegisterFragment"
+        android:label="RegisterFragment"
+        tools:layout="@layout/fragment_register"/>
 
 
 </navigation>

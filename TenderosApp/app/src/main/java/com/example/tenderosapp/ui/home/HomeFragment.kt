@@ -90,9 +90,10 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         when (item.itemId) {
             R.id.action_show_id -> (context as MainActivity).navController.navigate(R.id.action_mainFragment_to_displayIdFragment)
             R.id.action_show_settings ->{
-                Toast.makeText(context, "Settings selected", Toast.LENGTH_SHORT).show()
-                viewModel.queryGetBalance()
-
+                Toast.makeText(context, "Cerando Sesión", Toast.LENGTH_SHORT).show()
+                auth.signOut()
+                Navigation.findNavController(view!!).navigate(R.id.action_home_fragment_to_fragment_login)
+                //viewModel.queryGetBalance()
             }
         }
         return super.onOptionsItemSelected(item)
