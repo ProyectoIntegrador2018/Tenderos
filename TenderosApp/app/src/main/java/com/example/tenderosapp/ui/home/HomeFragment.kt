@@ -11,15 +11,20 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.GridLayoutManager
+import com.app.calendarioliturgico.view.calendar.ProviderAdapter
 import com.example.tenderosapp.MainActivity
 import com.example.tenderosapp.R
 import com.example.tenderosapp.model.Transaction
 import com.example.tenderosapp.data.viewmodel.MainViewModel
+import com.example.tenderosapp.model.Provider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import com.google.zxing.integration.android.IntentIntegrator
-import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.home_fragment.*
+import kotlinx.android.synthetic.main.home_fragment.readqr_main_fab
+import kotlinx.android.synthetic.main.home_fragment.toolbar_main_tb
+import kotlinx.android.synthetic.main.home_fragment_backup.*
 import java.lang.Exception
 
 
@@ -56,6 +61,19 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
             integrator.setPrompt(" Coloca el código de barras de tu recibo en el interior del rectángulo del visor para escanear.")
             integrator.initiateScan()
         }
+
+        //This is a Dummy List of Providers
+        val providrList = ArrayList<Provider>()
+        providrList.add(Provider("Telcel","#002598"))
+        providrList.add(Provider("Movistar","#78B415"))
+        providrList.add(Provider("AT&T","#019FDB"))
+        providrList.add(Provider("Unefon","#FCCB03"))
+        providrList.add(Provider("Netxel","#E25E19"))
+        providrList.add(Provider("Virgin Mobile","#E0173C"))
+
+        provider_recycler_rv.layoutManager = GridLayoutManager(context,2)
+        provider_recycler_rv.adapter = ProviderAdapter(context!!, providrList)
+        //END --- This is a Dummy List of Providers
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -87,6 +105,9 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.action_sale_id->{
+                Toast.makeText(context, "TODO: Accion para leer QR de Promoción...", Toast.LENGTH_SHORT).show()
+            }
             R.id.action_show_id -> (context as MainActivity).navController.navigate(R.id.action_mainFragment_to_displayIdFragment)
             R.id.action_show_logout ->{
                 Toast.makeText(context, "Cerando Sesión", Toast.LENGTH_SHORT).show()

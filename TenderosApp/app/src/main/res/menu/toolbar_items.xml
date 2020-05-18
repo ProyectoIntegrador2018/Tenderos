@@ -13,4 +13,10 @@
         android:title="StoreID"
         app:showAsAction="always"/>
 
+    <item
+        android:id="@+id/action_sale_id"
+        android:icon="@drawable/sale"
+        android:title="Sale"
+        app:showAsAction="always"/>
+
 </menu>

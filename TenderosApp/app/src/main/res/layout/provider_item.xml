@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:layout_marginStart="16dp"
+
+    android:id="@+id/provider_background_cv"
+    app:cardBackgroundColor="@color/default_white"
+    app:shapeAppearanceOverlay="@style/CustomSmallShapeAppearance">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="26dp">
+
+        <ImageView
+            android:id="@+id/provider_color_iv"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/provider_name_tv"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/rubik"
+            android:lines="1"
+            android:singleLine="true"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Telcel"
+            android:textColor="@color/default_black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/provider_color_iv"
+            app:layout_constraintStart_toEndOf="@+id/provider_color_iv"
+            app:layout_constraintTop_toTopOf="@+id/provider_color_iv"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
