@@ -25,6 +25,7 @@ import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.android.synthetic.main.home_fragment.readqr_main_fab
 import kotlinx.android.synthetic.main.home_fragment.toolbar_main_tb
 import kotlinx.android.synthetic.main.home_fragment_backup.*
+import com.example.tenderosapp.util.Encrypter.Companion.decyptData
 import java.lang.Exception
 
 
@@ -82,19 +83,22 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                 49374 -> {
                     val scanResult =
                         IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-                    if (scanResult != null) {
+                    var decryptedResult = decyptData(scanResult.contents)
+
+                    if (decryptedResult != null) {
                         val gson = Gson()
                         try {
                             val convertedTransaction: Transaction =
-                                gson.fromJson(scanResult.contents, Transaction::class.java)
+                                gson.fromJson(decryptedResult, Transaction::class.java)
                             Log.d("ErrorTransactionQR", convertedTransaction.transactionId)
                             if (convertedTransaction == null) {
                                 throw Exception()
                             }
-                            val bundle = bundleOf("transaction_data" to scanResult.contents)
+                            val bundle = bundleOf("transaction_data" to decryptedResult)
                             (context as MainActivity).navController.navigate(R.id.action_mainFragment_to_display_transaction, bundle)
                         } catch (e: Exception) {
-                            Toast.makeText(activity, "El código QR no es válido", Toast.LENGTH_LONG).show()
+
+                            Toast.makeText(activity, decryptedResult, Toast.LENGTH_LONG).show()
                         }
 
                     }

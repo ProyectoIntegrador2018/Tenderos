@@ -31,6 +31,18 @@ class Encrypter {
             return datos_post //Cadena Cifrada Lista Para Enviar
         }
 
+        fun encodeQRData(issuerUsername : String, issuerStore : String, dateIssued : String, deviceID : String) : String {
+            val data = "{\"Store\":\"$issuerStore\",\"Username\":\"$issuerUsername\",\"Date\":\"$dateIssued\",\"Device ID\":\"$deviceID\"}"
+            val datos_post = Base64.encodeToString(encrypt(
+                aesKey = BuildConfig.ENCRYPTION_KEY,
+                hmacKey=  BuildConfig.SIGN_KEY,
+                data =  data.toByteArray()
+            ), Base64.DEFAULT
+            )
+            return datos_post //Cadena Cifrada Lista Para Enviar
+        }
+
+
         fun decyptData(data_cipher : String) : String {
             // Respuesta en claro a utilizar.
             val encodedKey: ByteArray = Base64.decode(data_cipher.toByteArray(), Base64.DEFAULT)
