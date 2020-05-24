@@ -94,6 +94,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                             if (convertedTransaction == null) {
                                 throw Exception()
                             }
+
                             val bundle = bundleOf("transaction_data" to decryptedResult)
                             (context as MainActivity).navController.navigate(R.id.action_mainFragment_to_display_transaction, bundle)
                         } catch (e: Exception) {
@@ -110,7 +111,14 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_sale_id->{
-                Toast.makeText(context, "TODO: Accion para leer QR de Promoción...", Toast.LENGTH_SHORT).show()
+                val integrator = IntentIntegrator.forSupportFragment(this)
+                integrator.setOrientationLocked(true)
+                integrator.setPrompt(" Coloca el código de barras de tu recibo en el interior del rectángulo del visor para escanear.")
+                integrator.initiateScan()
+
+
+
+               // Toast.makeText(context, "Accion para leer QR de Promoción...", Toast.LENGTH_SHORT).show()
             }
             R.id.action_show_id -> (context as MainActivity).navController.navigate(R.id.action_mainFragment_to_displayIdFragment)
             R.id.action_show_logout ->{

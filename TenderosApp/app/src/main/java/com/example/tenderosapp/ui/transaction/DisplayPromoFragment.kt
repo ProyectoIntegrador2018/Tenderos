@@ -21,7 +21,7 @@ import java.lang.Exception
 /**
  * A simple [Fragment] subclass.
  */
-class TransactionFragment : Fragment() {
+class DisplayPromoFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
