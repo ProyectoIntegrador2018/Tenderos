@@ -34,9 +34,9 @@ class TransactionFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val transactionData = arguments?.getString("transaction_data")
         val gson = Gson()
-        //val transaction: Transaction = gson.fromJson(transactionData, Transaction::class.java)
+        val transaction: Transaction = gson.fromJson(transactionData, Transaction::class.java)
 
-        //val transactionAccepted = "{\"transactionId\":${transaction.transactionId}, \"status\":\"accepted\"}"
+        val transactionAccepted = "{\"transactionId\":${transaction.transactionId}, \"status\":\"accepted\"}"
 
         //Opciones de Colores del QR
         val color = Color()
@@ -48,7 +48,7 @@ class TransactionFragment : Fragment() {
         //Opciones de Renderizado del QR
         val renderOption = RenderOption()
         if(transactionData != null)
-            renderOption.content = transactionData //Contenido del QR
+            renderOption.content = transactionAccepted //Contenido del QR
         renderOption.size = 800 //Tamaño del QR
         renderOption.borderWidth = 20 //Espaciado del marco del QR
         renderOption.patternScale = 0.75f //Tamaño del Patron
