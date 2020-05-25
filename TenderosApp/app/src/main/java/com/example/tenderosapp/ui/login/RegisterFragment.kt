@@ -9,9 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 
 import com.example.tenderosapp.R
+import com.example.tenderosapp.data.viewmodel.MainViewModel
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_register.*
@@ -19,15 +22,28 @@ import kotlinx.android.synthetic.main.fragment_register.*
 class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var viewModel: MainViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         auth = FirebaseAuth.getInstance()
+        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
-        register_register_btn.setOnClickListener {
-            if(verifyAllfields()){
-                doSignUp(it)
-            }
+        register_register_btn.setOnClickListener {view ->
+           if( verifyAllfields()){
+               viewModel.getIsEmailRegistered().observe(this, Observer {
+                   it?.let {
+                       if (it){
+                           doSignUp(view)
+                       }else{
+                           Toast.makeText(context,"Error. Usuario no aceptado. Contacta a soporte.", Toast.LENGTH_SHORT).show()
+                       }
+                   }?: kotlin.run {
+                       Toast.makeText(context,"Error. No tienes permisos. Contacta a soporte.", Toast.LENGTH_SHORT).show()
+                   }
+               });
+           }
+
         }
 
         register_home_btn.setOnClickListener {
@@ -38,6 +54,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     //Crear Cuenta
     private fun doSignUp(view : View) {
+
         auth.createUserWithEmailAndPassword(register_email_tf.text.toString(), register_psswd_tf.text.toString())
             .addOnCompleteListener() { task ->
                 if (task.isSuccessful) {
@@ -89,6 +106,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             return false
         }
 
+        viewModel.queryIsEmailRegistered(register_email_tf.text.toString())
         return true
     }
 }
