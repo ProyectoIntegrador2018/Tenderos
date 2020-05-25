@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.IdRes
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -43,7 +44,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         auth = FirebaseAuth.getInstance()
 
         if(auth.currentUser == null){
-            Navigation.findNavController(view).navigate(R.id.action_home_fragment_to_fragment_login)
+            getFragmentNavController(R.id.nav_host_fragment)!!.navigate(R.id.fragment_login)
         }
     }
 
@@ -57,11 +58,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         }
 
         readqr_main_fab.setOnClickListener {
-            val integrator = IntentIntegrator.forSupportFragment(this)
-            isTransaction = true
-            integrator.setOrientationLocked(true)
-            integrator.setPrompt(" Coloca el código QR de tu recibo en el interior del rectángulo del visor para escanear.")
-            integrator.initiateScan()
+            getFragmentNavController(R.id.nav_host_fragment)!!.navigate(R.id.action_mainFragment_to_displayIdFragment)
         }
 
         //This is a Dummy List of Providers
@@ -142,16 +139,26 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                 integrator.initiateScan()
                // Toast.makeText(context, "Accion para leer QR de Promoción...", Toast.LENGTH_SHORT).show()
             }
-            R.id.action_show_id -> (context as MainActivity).navController.navigate(R.id.action_mainFragment_to_displayIdFragment)
+            R.id.action_read_qr_id -> {
+                val integrator = IntentIntegrator.forSupportFragment(this)
+                isTransaction = true
+                integrator.setOrientationLocked(true)
+                integrator.setPrompt(" Coloca el código QR de tu recibo en el interior del rectángulo del visor para escanear.")
+                integrator.initiateScan()
+            }
             R.id.action_show_logout ->{
                 Toast.makeText(context, "Cerando Sesión", Toast.LENGTH_SHORT).show()
                 auth.signOut()
-                Navigation.findNavController(view!!).navigate(R.id.action_home_fragment_to_fragment_login)
+                getFragmentNavController(R.id.nav_host_fragment)!!.navigate(R.id.action_home_fragment_to_fragment_login)
                 //viewModel.queryGetBalance()
             }
             R.id.action_show_cupon_history -> (context as MainActivity).navController.navigate(R.id.action_home_fragment_to_fragment_cupon_history)
         }
         return super.onOptionsItemSelected(item)
     }
+    fun Fragment.getFragmentNavController(@IdRes id: Int) = activity?.let {
+        return@let Navigation.findNavController(it,id)
+    }
+
 }
 

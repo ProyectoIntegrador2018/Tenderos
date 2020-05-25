@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.IdRes
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
@@ -47,7 +48,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         }
 
         register_home_btn.setOnClickListener {
-            Navigation.findNavController(it).popBackStack()
+            getFragmentNavController(R.id.nav_host_fragment)!!.popBackStack()
         }
 
     }
@@ -60,11 +61,11 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 if (task.isSuccessful) {
                     // Exito, hacer login al nuevo usuario
                     Log.d(ContentValues.TAG, "createUserWithEmail:success")
-                    Toast.makeText(this.context, "Usuario Creado",
+                    Toast.makeText(context, "Usuario Creado",
                         Toast.LENGTH_LONG).show()
                     val user = auth.currentUser
                     if(user != null){
-                        Navigation.findNavController(view).popBackStack()
+                        getFragmentNavController(R.id.nav_host_fragment)!!.popBackStack()
                     } else {
                         Toast.makeText(this.context, "Error al Crear usuario", Toast.LENGTH_LONG).show()
                     }
@@ -74,7 +75,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                     Log.w(ContentValues.TAG, "createUserWithEmail:failure", task.exception)
                     Toast.makeText(this.context, "Error al crear usuario.",
                         Toast.LENGTH_LONG).show()
-                    Navigation.findNavController(view).popBackStack()
+                    getFragmentNavController(R.id.nav_host_fragment)!!.popBackStack()
                 }
             }
 
@@ -108,5 +109,8 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
 
         viewModel.queryIsEmailRegistered(register_email_tf.text.toString())
         return true
+    }
+    fun Fragment.getFragmentNavController(@IdRes id: Int) = activity?.let {
+        return@let Navigation.findNavController(it,id)
     }
 }

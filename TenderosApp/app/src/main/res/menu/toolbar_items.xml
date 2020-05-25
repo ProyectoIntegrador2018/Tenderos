@@ -8,8 +8,8 @@
         app:showAsAction="always"/>
 
     <item
-        android:id="@+id/action_show_id"
-        android:icon="@drawable/outline_store_black_24"
+        android:id="@+id/action_read_qr_id"
+        android:icon="@drawable/qrcode"
         android:title="StoreID"
         app:showAsAction="always"/>
 

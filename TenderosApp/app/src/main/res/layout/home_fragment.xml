@@ -44,7 +44,7 @@
         app:tint="@null"
         app:fabSize="normal"
         app:backgroundTint="@color/default_white"
-        app:srcCompat="@drawable/ic_qrcode_white_24dp"
+        app:srcCompat="@drawable/outline_store_black_24"
         android:tint="@color/default_white"
         android:backgroundTint="@color/tenderos_secondary"
         app:layout_anchor="@id/toolbar_main_tb"/>

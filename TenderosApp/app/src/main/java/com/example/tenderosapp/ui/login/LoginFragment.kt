@@ -10,10 +10,12 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.annotation.IdRes
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import com.example.tenderosapp.MainActivity
 
 import com.example.tenderosapp.R
 import com.example.tenderosapp.data.repository.AppRepository
@@ -35,7 +37,7 @@ class LoginFragment :  Fragment(R.layout.fragment_login) {
         requireActivity().onBackPressedDispatcher.addCallback {}
 
         login_register.setOnClickListener{
-            Navigation.findNavController(it).navigate(R.id.action_fragment_login_to_registerFragment)
+            getFragmentNavController(R.id.nav_host_fragment)!!.navigate(R.id.action_fragment_login_to_registerFragment)
         }
 
         login_button.setOnClickListener{
@@ -50,7 +52,7 @@ class LoginFragment :  Fragment(R.layout.fragment_login) {
     //Actualizar la navegación si el usuario es iudentificado correctamente
     fun updateUI(currentUser: FirebaseUser?){
         if(currentUser != null) {
-            Navigation.findNavController(login_button).popBackStack()
+            getFragmentNavController(R.id.nav_host_fragment)!!.navigate(R.id.home_fragment)
             Toast.makeText(this.context, "Bienvenido.",Toast.LENGTH_LONG).show()
         }
     }
@@ -97,5 +99,8 @@ class LoginFragment :  Fragment(R.layout.fragment_login) {
             }
         });
 
+    }
+    fun Fragment.getFragmentNavController(@IdRes id: Int) = activity?.let {
+        return@let Navigation.findNavController(it,id)
     }
 }

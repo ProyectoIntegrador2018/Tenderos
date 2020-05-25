@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.CursorAdapter
 import android.widget.LinearLayout
+import androidx.annotation.IdRes
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
@@ -55,8 +56,10 @@ class promoDisplayFragment : Fragment() {
 
         continue_button.setOnClickListener {
             //val bundle = bundleOf("transaction_data" to transactionData)
-           (context as MainActivity).navController.navigate(R.id.action_fragmentPromoDisplay_to_HomeFragment)
-            Navigation.createNavigateOnClickListener(R.id.action_fragmentPromoDisplay_to_HomeFragment)
+            getFragmentNavController(R.id.nav_host_fragment)!!.navigate(R.id.action_fragmentPromoDisplay_to_HomeFragment)
         }
+    }
+    fun Fragment.getFragmentNavController(@IdRes id: Int) = activity?.let {
+        return@let Navigation.findNavController(it,id)
     }
 }
