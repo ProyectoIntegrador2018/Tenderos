@@ -11,9 +11,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.CursorAdapter
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.annotation.IdRes
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -61,9 +63,24 @@ class promoDisplayFragment : Fragment() {
         date_tv.text = "Valido Hasta: " + sdf.format(date)
 
         continue_button.setOnClickListener {
+            continue_button.isEnabled = false
             viewModel.queryRegisterPromo(promo,auth.uid!!)
+            viewModel.getRegisterPromoSucccess().observe(this, Observer {
+                it?.let {
+                    if(it){
+                        Toast.makeText(activity, "La promoción se registró de manera exitosa!", Toast.LENGTH_LONG).show()
+                        getFragmentNavController(R.id.nav_host_fragment)!!.navigate(R.id.action_fragmentPromoDisplay_to_HomeFragment)
+                    }else {
+                        Toast.makeText(activity, "Hubo un error aplicando la Promoción...", Toast.LENGTH_LONG).show()
+                        continue_button.isEnabled = true
+                    }
 
-            getFragmentNavController(R.id.nav_host_fragment)!!.navigate(R.id.action_fragmentPromoDisplay_to_HomeFragment)
+                }?: kotlin.run {
+                    continue_button.isEnabled = true
+                    Toast.makeText(activity, "Hubo un error aplicando la Promoción...", Toast.LENGTH_LONG).show()
+                }
+            })
+
         }
     }
     fun Fragment.getFragmentNavController(@IdRes id: Int) = activity?.let {
