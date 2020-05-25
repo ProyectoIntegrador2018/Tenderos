@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@drawable/gradient_background"
+    android:layout_height="match_parent">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/Widget.Tenderos.TextView.PrimaryTitle"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="33dp"
+            android:fontFamily="@font/rubik_medium"
+            android:text="Historia de cupones"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/provider_recycler_rv"
+            android:paddingTop="24dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="24dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_tv" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/toolbar_main_tb"
+        app:elevation="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:fabAlignmentMode="end"
+        app:hideOnScroll="true"
+        android:backgroundTint="@android:color/transparent"
+        android:layout_gravity="bottom"
+        android:theme="@style/TanderosToolbar"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

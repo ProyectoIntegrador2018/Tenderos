@@ -7,11 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.tenderosapp.MainActivity
 import com.example.tenderosapp.R
+import com.example.tenderosapp.util.Encrypter.Companion.encodeQRData
+import com.example.tenderosapp.util.Encrypter.Companion.encodeTransactionData
 import com.github.sumimakito.awesomeqr.AwesomeQrRenderer
 import com.github.sumimakito.awesomeqr.RenderResult
 import com.github.sumimakito.awesomeqr.option.RenderOption
 import com.github.sumimakito.awesomeqr.option.color.Color
 import kotlinx.android.synthetic.main.fragment_display_store_id.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class DisplayIdFragment : Fragment() {
 
@@ -28,6 +32,16 @@ class DisplayIdFragment : Fragment() {
 
         title_tv.text = "Doña Chuchita"
 
+        var currentUsername  = "a01196412@gmail.com"
+        var currentStoreName = "donachuchita"
+        var currentTime = System.currentTimeMillis()
+        var sdf = SimpleDateFormat("MMM dd,yyyy HH:mm")
+        var timeStamp = Date(currentTime)
+        var res = encodeQRData(currentUsername, currentStoreName, timeStamp.toString())
+        //PROMOCION
+      //var res =  encodeTransactionData("{\"couponCode\":\"BF3710\",\"couponDiscount\":\"8\",\"couponType\":\"Porciento\",\"description\":\"Consigue el 8% de descuento en tu primera compra en este establecimiento.\",\"businessId\":\"987654\",\"businessName\":\"Bimbo\",\"ExpiryDate\":1621884226000}")
+        //TRANSACCION
+       // var res = encodeTransactionData("{\"previousBalance\":\"-400\",\"actualBalance\":\"-1400\",\"payment\":\"500\",\"businessId\":\"987654\",\"businessName\":\"Bimbo\",\"date\":1586309519369,\"products\":[{\"deliveredAmount\":10,\"productId\":\"gansito_123456789\",\"productName\":\"Gansitos\",\"returnedAmount\":0,\"total\":1000},{\"deliveredAmount\":5,\"productId\":\"Pinguino_123456789\",\"productName\":\"Pinguinos\",\"returnedAmount\":0,\"total\":500}],\"saleTotal\":1500,\"storeId\":\"123456\",\"storeName\":\"Doña Chuchita\",\"transactionId\":\"1234\"}")
         //val constraintLayout = findViewById(R.id.constraintLayout) as ConstraintLayout
         //Opciones de Colores del QR
         val color = Color()
@@ -38,7 +52,7 @@ class DisplayIdFragment : Fragment() {
 
         //Opciones de Renderizado del QR
         val renderOption = RenderOption()
-        renderOption.content = "Si estás viendo esto, todo salió correctamente" //Contenido del QR
+        renderOption.content = res //Contenido del QR
         renderOption.size = 800 //Tamaño del QR
         renderOption.borderWidth = 20 //Espaciado del marco del QR
         renderOption.patternScale = 0.75f //Tamaño del Patron

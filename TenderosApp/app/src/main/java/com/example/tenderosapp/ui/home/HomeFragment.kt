@@ -16,6 +16,7 @@ import com.app.calendarioliturgico.view.calendar.ProviderAdapter
 import com.example.tenderosapp.MainActivity
 import com.example.tenderosapp.R
 import com.example.tenderosapp.model.Transaction
+import com.example.tenderosapp.model.Promo
 import com.example.tenderosapp.data.viewmodel.MainViewModel
 import com.example.tenderosapp.model.Provider
 import com.google.firebase.auth.FirebaseAuth
@@ -24,14 +25,14 @@ import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.android.synthetic.main.home_fragment.readqr_main_fab
 import kotlinx.android.synthetic.main.home_fragment.toolbar_main_tb
-import kotlinx.android.synthetic.main.home_fragment_backup.*
+import com.example.tenderosapp.util.Encrypter.Companion.decyptData
 import java.lang.Exception
 
 
 class HomeFragment : Fragment(R.layout.home_fragment) {
     private lateinit var auth: FirebaseAuth
     private lateinit var viewModel: MainViewModel
-
+    private var isTransaction = false
     public override fun onStart() {
         super.onStart()
         auth = FirebaseAuth.getInstance()
@@ -57,8 +58,9 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
         readqr_main_fab.setOnClickListener {
             val integrator = IntentIntegrator.forSupportFragment(this)
+            isTransaction = true
             integrator.setOrientationLocked(true)
-            integrator.setPrompt(" Coloca el código de barras de tu recibo en el interior del rectángulo del visor para escanear.")
+            integrator.setPrompt(" Coloca el código QR de tu recibo en el interior del rectángulo del visor para escanear.")
             integrator.initiateScan()
         }
 
@@ -82,19 +84,46 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                 49374 -> {
                     val scanResult =
                         IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-                    if (scanResult != null) {
+                    var decryptedResult = decyptData(scanResult.contents)
+
+                    if (decryptedResult != null) {
                         val gson = Gson()
-                        try {
-                            val convertedTransaction: Transaction =
-                                gson.fromJson(scanResult.contents, Transaction::class.java)
-                            Log.d("ErrorTransactionQR", convertedTransaction.transactionId)
-                            if (convertedTransaction == null) {
-                                throw Exception()
+                        if(isTransaction) {
+                            try {
+                                val convertedTransaction: Transaction =
+                                    gson.fromJson(decryptedResult, Transaction::class.java)
+                                Log.d("ErrorTransactionQR", convertedTransaction.transactionId)
+                                if (convertedTransaction == null) {
+                                    throw Exception()
+                                }
+
+                                val bundle = bundleOf("transaction_data" to decryptedResult)
+                                (context as MainActivity).navController.navigate(
+                                    R.id.action_mainFragment_to_display_transaction,
+                                    bundle
+                                )
+                            } catch (e: Exception) {
+
+                                Toast.makeText(activity, decryptedResult, Toast.LENGTH_LONG).show()
                             }
-                            val bundle = bundleOf("transaction_data" to scanResult.contents)
-                            (context as MainActivity).navController.navigate(R.id.action_mainFragment_to_display_transaction, bundle)
-                        } catch (e: Exception) {
-                            Toast.makeText(activity, "El código QR no es válido", Toast.LENGTH_LONG).show()
+                        } else {
+                            try {
+                                val convertedPromo: Promo =
+                                    gson.fromJson(decryptedResult, Promo::class.java)
+                                Log.d("ErrorTransactionQR", convertedPromo.couponCode)
+                                if (convertedPromo == null) {
+                                    throw Exception()
+                                }
+
+                                val bundle = bundleOf("promo_data" to decryptedResult)
+                                (context as MainActivity).navController.navigate(
+                                    R.id.action_mainFragment_to_display_promo,
+                                    bundle
+                                )
+                            } catch (e: Exception) {
+
+                                Toast.makeText(activity, decryptedResult, Toast.LENGTH_LONG).show()
+                            }
                         }
 
                     }
@@ -106,7 +135,12 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_sale_id->{
-                Toast.makeText(context, "TODO: Accion para leer QR de Promoción...", Toast.LENGTH_SHORT).show()
+                val integrator = IntentIntegrator.forSupportFragment(this)
+                isTransaction = false
+                integrator.setOrientationLocked(true)
+                integrator.setPrompt(" Coloca el código QR de tu recibo en el interior del rectángulo del visor para escanear.")
+                integrator.initiateScan()
+               // Toast.makeText(context, "Accion para leer QR de Promoción...", Toast.LENGTH_SHORT).show()
             }
             R.id.action_show_id -> (context as MainActivity).navController.navigate(R.id.action_mainFragment_to_displayIdFragment)
             R.id.action_show_logout ->{
@@ -115,6 +149,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                 Navigation.findNavController(view!!).navigate(R.id.action_home_fragment_to_fragment_login)
                 //viewModel.queryGetBalance()
             }
+            R.id.action_show_cupon_history -> (context as MainActivity).navController.navigate(R.id.action_home_fragment_to_fragment_cupon_history)
         }
         return super.onOptionsItemSelected(item)
     }

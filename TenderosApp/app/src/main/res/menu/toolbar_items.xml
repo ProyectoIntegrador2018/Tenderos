@@ -19,4 +19,10 @@
         android:title="Sale"
         app:showAsAction="always"/>
 
+    <item
+        android:id="@+id/action_show_cupon_history"
+        android:icon="@drawable/ic_history_black_24dp"
+        android:title="Sale"
+        app:showAsAction="always"/>
+
 </menu>
