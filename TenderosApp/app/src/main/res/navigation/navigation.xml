@@ -20,8 +20,12 @@
             android:id="@+id/action_mainFragment_to_display_promo"
             app:destination="@id/fragment_display_promo" />
         <action
-            android:id="@+id/action_home_fragment_to_fragment_login"
-            app:destination="@id/fragment_login" />
+        android:id="@+id/action_home_fragment_to_fragment_login"
+        app:destination="@id/fragment_login" />
+
+        <action
+            android:id="@+id/action_home_fragment_to_fragment_cupon_history"
+            app:destination="@id/fragment_cupon_history" />
 
     </fragment>
     <fragment
@@ -29,6 +33,11 @@
         android:name="com.example.tenderosapp.ui.identification.DisplayIdFragment"
         android:label="fragment_display_store_id"
         tools:layout="@layout/fragment_display_store_id" />
+    <fragment
+        android:id="@+id/fragment_cupon_history"
+        android:name="com.example.tenderosapp.ui.home.CuponHistoryFragment"
+        android:label="fragment_cupon_history"
+        tools:layout="@layout/fragment_cupon_history" />
     <fragment
         android:id="@+id/fragment_login"
         android:name="com.example.tenderosapp.ui.login.LoginFragment"

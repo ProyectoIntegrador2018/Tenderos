@@ -25,7 +25,6 @@ import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.android.synthetic.main.home_fragment.readqr_main_fab
 import kotlinx.android.synthetic.main.home_fragment.toolbar_main_tb
-import kotlinx.android.synthetic.main.home_fragment_backup.*
 import com.example.tenderosapp.util.Encrypter.Companion.decyptData
 import java.lang.Exception
 
@@ -150,6 +149,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                 Navigation.findNavController(view!!).navigate(R.id.action_home_fragment_to_fragment_login)
                 //viewModel.queryGetBalance()
             }
+            R.id.action_show_cupon_history -> (context as MainActivity).navController.navigate(R.id.action_home_fragment_to_fragment_cupon_history)
         }
         return super.onOptionsItemSelected(item)
     }
