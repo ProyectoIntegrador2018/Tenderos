@@ -14,22 +14,24 @@ import android.widget.LinearLayout
 import androidx.annotation.IdRes
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tenderosapp.R
+import com.example.tenderosapp.data.viewmodel.MainViewModel
 import com.example.tenderosapp.model.Promo
 import com.example.tenderosapp.model.customAdapter
 import com.google.android.play.core.internal.s
+import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.fragment_display_promo.*
 
 
-/**
- * A simple [Fragment] subclass.
- */
 class promoDisplayFragment : Fragment() {
+    private lateinit var viewModel: MainViewModel
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
@@ -41,10 +43,15 @@ class promoDisplayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        auth = FirebaseAuth.getInstance()
+
         val promoData = arguments?.getString("promo_data")
         val gson = Gson()
         val promo: Promo = gson.fromJson(promoData, Promo::class.java)
         coupon_tv.text = promo.couponCode
+
+
 
         val sdf = java.text.SimpleDateFormat("yyyy-MM-dd")
         val date = java.util.Date(promo.ExpiryDate)
@@ -53,9 +60,9 @@ class promoDisplayFragment : Fragment() {
         description_tv.text = promo.description
         date_tv.text = "Valido Hasta: " + sdf.format(date)
 
-
         continue_button.setOnClickListener {
-            //val bundle = bundleOf("transaction_data" to transactionData)
+            viewModel.queryRegisterPromo(promo,auth.uid!!)
+
             getFragmentNavController(R.id.nav_host_fragment)!!.navigate(R.id.action_fragmentPromoDisplay_to_HomeFragment)
         }
     }

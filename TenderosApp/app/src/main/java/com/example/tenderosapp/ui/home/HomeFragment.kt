@@ -52,6 +52,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
+
         toolbar_main_tb.inflateMenu(R.menu.toolbar_items)
         toolbar_main_tb.setOnMenuItemClickListener {
             onOptionsItemSelected(it)
@@ -119,7 +120,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                                 )
                             } catch (e: Exception) {
 
-                                Toast.makeText(activity, decryptedResult, Toast.LENGTH_LONG).show()
+                                Toast.makeText(activity, "Error Leyendo Promo..", Toast.LENGTH_LONG).show()
                             }
                         }
 

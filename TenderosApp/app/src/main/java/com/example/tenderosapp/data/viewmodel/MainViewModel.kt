@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.tenderosapp.data.repository.AppRepository
 import com.example.tenderosapp.data.repository.PagofonRepository
+import com.example.tenderosapp.model.Promo
 import com.example.tenderosapp.model.response.BalanceResponse
 
 class MainViewModel : ViewModel() {
@@ -27,14 +28,13 @@ class MainViewModel : ViewModel() {
     }
 
     fun getBalance(): LiveData<BalanceResponse?> = pagofonRepository.getBalance()
+    fun getIsEmailRegistered(): LiveData<Boolean?> = appRepository.getIsEmailRegistered()
+    fun getRegisterPromoSucccess(): LiveData<Boolean?> = appRepository.getRegisterPromoSucccess()
 
     fun queryGetBalance() = pagofonRepository.queryGetBalance()
 
-
-    fun getIsEmailRegistered(): LiveData<Boolean?> = appRepository.getIsEmailRegistered()
-
     fun queryIsEmailRegistered(email : String) = appRepository.queryIsEmailRegistered(email)
 
-
+    fun queryRegisterPromo(promo : Promo, uid: String)  = appRepository.queryRegisterPromo(promo, uid)
 
 }
