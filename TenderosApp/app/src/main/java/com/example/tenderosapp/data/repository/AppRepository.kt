@@ -29,5 +29,8 @@ class AppRepository {
     fun queryRegisterPromo(promo : Promo, uid : String )  = appClient.queryRegisterPromo(promo, uid)
     fun getRegisterPromoSucccess(): LiveData<Boolean?> = appClient.getRegisterPromoSucccess()
 
+    fun getPromotionList() : LiveData<ArrayList<Promo>?> = appClient.getPromotionList()
+
+    fun queryGetPromorionList(uid : String)  = appClient.queryGetPromorionList(uid)
 
 }

@@ -1,21 +1,25 @@
 package com.example.tenderosapp.model
 
-class Promo {
-    var couponCode: String = ""
-    var couponDiscount: String = ""
-    var couponType: String = ""
-    var description: String = ""
-    var businessId: String = ""
-    var businessName: String = ""
-    var ExpiryDate: Long = 0
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-    constructor(couponCode : String, couponDiscount: String, couponType: String, description: String, businessId: String, businessName: String, ExpiryDate: Long) {
-        this.couponCode = couponCode
-        this.couponDiscount = couponDiscount
-        this.couponType = couponType
-        this.businessId = businessId
-        this.businessName = businessName
-        this.description = description
-        this.ExpiryDate = ExpiryDate
-    }
+@Parcelize
+class Promo (
+    var couponCode: String,
+    var couponDiscount: String,
+    var couponType: String,
+    var description: String,
+    var businessId: String,
+    var businessName: String,
+    var ExpiryDate: Long
+) : Parcelable {
+    constructor()   : this(
+    couponCode =  "",
+    couponDiscount = "",
+    couponType =  "",
+    businessId =  "",
+    businessName = "",
+    description = "",
+    ExpiryDate =  0
+    )
 }

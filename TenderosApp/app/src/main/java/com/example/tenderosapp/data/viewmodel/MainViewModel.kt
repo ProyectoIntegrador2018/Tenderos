@@ -37,4 +37,7 @@ class MainViewModel : ViewModel() {
 
     fun queryRegisterPromo(promo : Promo, uid: String)  = appRepository.queryRegisterPromo(promo, uid)
 
+    fun getPromotionList() : LiveData<ArrayList<Promo>?> = appRepository.getPromotionList()
+
+    fun queryGetPromorionList(uid : String)  = appRepository.queryGetPromorionList(uid)
 }

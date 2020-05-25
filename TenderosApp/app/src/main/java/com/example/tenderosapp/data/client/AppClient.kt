@@ -22,6 +22,8 @@ import kotlin.collections.ArrayList
 class AppClient {
     var isEmailRegistered: MutableLiveData<Boolean?>
     var isPromoRegistered: MutableLiveData<Boolean?>
+    var promotionlist: MutableLiveData<ArrayList<Promo>?>
+
 
     var db: FirebaseFirestore
     private val settings : FirebaseFirestoreSettings
@@ -29,6 +31,7 @@ class AppClient {
     init {
         isEmailRegistered = MutableLiveData()
         isPromoRegistered = MutableLiveData()
+        promotionlist = MutableLiveData()
         db = FirebaseFirestore.getInstance()
         settings =  FirebaseFirestoreSettings.Builder()
             .setPersistenceEnabled(true)
@@ -49,6 +52,33 @@ class AppClient {
 
     fun getIsEmailRegistered(): LiveData<Boolean?> = isEmailRegistered
     fun getRegisterPromoSucccess(): LiveData<Boolean?> = isPromoRegistered
+    fun getPromotionList() : LiveData<ArrayList<Promo>?> = promotionlist
+
+
+    fun queryGetPromorionList(uid : String) {
+        db.collection("profile")
+            .document(uid)
+            .collection("promotion_list")
+            .get()
+            .addOnCompleteListener { task ->
+                val promotions : ArrayList<Promo> = ArrayList()
+
+                if (task.isSuccessful) {
+                    for (document in task.result!!) {
+                        val myObject = document.toObject(Promo::class.java)
+                        promotions.add(myObject)
+                        Log.d("OBJECT", myObject.toString())
+                    }
+                } else {
+                    Log.w("ERROR DATA", "Error getting documents.", task.getException())
+                }
+                Log.d("promo leng SIZE: ", promotions.size.toString())
+                if (promotions.size >0){
+                    promotionlist.postValue(promotions)
+                }else promotionlist.postValue(null)
+            }
+
+    }
 
     fun queryIsEmailRegistered(email : String) {
         db.collection("approved_mails")
@@ -69,6 +99,7 @@ class AppClient {
                 isEmailRegistered.postValue(null)
             }
     }
+
 
     fun queryRegisterPromo(promotion : Promo, uid : String) {
         Log.d("Promo => ", promotion.toString())
