@@ -18,6 +18,22 @@
         android:padding="26dp">
 
         <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/rubik"
+            android:lines="1"
+            android:singleLine="true"
+            android:text="fecha"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/default_black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/percentage"
+            app:layout_constraintStart_toEndOf="@+id/percentage"
+            app:layout_constraintTop_toTopOf="@+id/percentage"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
             android:id="@+id/product_name"
             android:layout_width="wrap_content"
             android:fontFamily="@font/rubik"
@@ -26,19 +42,20 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:textColor="@color/default_black"
-            android:textSize="13sp"
-            android:text="Texto1"
+            android:textSize="16sp"
+            android:text="descrioicon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
+
 
         <TextView
             android:id="@+id/percentage"
             android:layout_width="wrap_content"
             android:fontFamily="@font/rubik"
             android:lines="1"
-            android:text="Texto2"
+            android:text="id"
             android:singleLine="true"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -49,20 +66,7 @@
             app:layout_constraintTop_toTopOf="@+id/product_name"
             app:layout_constraintVertical_chainStyle="packed" />
 
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:fontFamily="@font/rubik"
-            android:lines="1"
-            android:singleLine="true"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:textColor="@color/default_black"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/percentage"
-            app:layout_constraintStart_toEndOf="@+id/percentage"
-            app:layout_constraintTop_toTopOf="@+id/percentage"
-            app:layout_constraintVertical_chainStyle="packed" />
+
 
 
     </LinearLayout>
