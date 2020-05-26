@@ -59,6 +59,9 @@ You should ask for access to this tools if you don't have it already:
 
 ## Development
 
+### Changelog v0.3 - Cupons
+- Added HU011 Receive coupon, and encrypt qr codes
+
 ### Changelog v0.2 - Authentication Update
 - Added HU001 Login, Signup and Logout
 - You can now create and access an accound using email and password
