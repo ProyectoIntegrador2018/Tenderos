@@ -10,10 +10,16 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.annotation.IdRes
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import com.example.tenderosapp.MainActivity
 
 import com.example.tenderosapp.R
+import com.example.tenderosapp.data.repository.AppRepository
+import com.example.tenderosapp.data.viewmodel.MainViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -21,15 +27,20 @@ import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment :  Fragment(R.layout.fragment_login) {
     private lateinit var auth: FirebaseAuth
+    private lateinit var viewModel: MainViewModel
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         auth = FirebaseAuth.getInstance()
+        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
         requireActivity().onBackPressedDispatcher.addCallback {}
 
+        login_register.setOnClickListener{
+            getFragmentNavController(R.id.nav_host_fragment)!!.navigate(R.id.action_fragment_login_to_registerFragment)
+        }
+
         login_button.setOnClickListener{
-            //doSignUp()
             doLogin()
         }
     }
@@ -41,18 +52,14 @@ class LoginFragment :  Fragment(R.layout.fragment_login) {
     //Actualizar la navegación si el usuario es iudentificado correctamente
     fun updateUI(currentUser: FirebaseUser?){
         if(currentUser != null) {
-            Navigation.findNavController(login_button).popBackStack()
-            //action_loginFragment_to_mainFragment
+            getFragmentNavController(R.id.nav_host_fragment)!!.navigate(R.id.home_fragment)
             Toast.makeText(this.context, "Bienvenido.",Toast.LENGTH_LONG).show()
-        } else {
-            Toast.makeText( this.context, "Usuario no identificado.",Toast.LENGTH_LONG).show()
         }
     }
 
 
     private fun doLogin() {
         Toast.makeText(this.context, email_tf.text.toString(),Toast.LENGTH_LONG).show()
-
         if (email_tf.text.toString().isEmpty()) {
             email_layout.error = "Please enter email"
             email_tf.requestFocus()
@@ -71,42 +78,29 @@ class LoginFragment :  Fragment(R.layout.fragment_login) {
             return
         }
 
-        auth.signInWithEmailAndPassword(email_tf.text.toString(), psswd_tf.text.toString())
-            .addOnCompleteListener() { task ->
-                if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    updateUI(user)
-                } else {
-                    updateUI(null)
+        viewModel.queryIsEmailRegistered(email_tf.text.toString())
+        viewModel.getIsEmailRegistered().observe(this, Observer {
+            it?.let {
+                if (it){
+                    auth.signInWithEmailAndPassword(email_tf.text.toString(), psswd_tf.text.toString())
+                        .addOnCompleteListener() { task ->
+                            if (task.isSuccessful) {
+                                val user = auth.currentUser
+                                updateUI(user)
+                            } else {
+                                updateUI(null)
+                            }
+                        }
+                }else{
+                    Toast.makeText(context,"Error. Usuario no aceptado. Contacta a soporte.", Toast.LENGTH_SHORT).show()
                 }
+            }?: kotlin.run {
+                Toast.makeText(context,"Error. No tienes permisos. Contacta a soporte.", Toast.LENGTH_SHORT).show()
             }
+        });
+
     }
-
-
-    //Crear Cuenta
-    private fun doSignUp() {
-        auth.createUserWithEmailAndPassword(email_tf.text.toString(), psswd_tf.text.toString())
-            .addOnCompleteListener() { task ->
-                if (task.isSuccessful) {
-                    // Exito, hacer login al nuevo usuario
-                    Log.d(TAG, "createUserWithEmail:success")
-                    Toast.makeText(this.context, "Usuario Creado",
-                        Toast.LENGTH_LONG).show()
-                    val user = auth.currentUser
-                    if(user != null){
-                        updateUI(user)
-                    } else {
-                        Toast.makeText(this.context, "Error al Crear usuario", Toast.LENGTH_LONG).show()
-                    }
-
-                } else {
-                    // Error al Crear usuario
-                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(this.context, "Error al crear usuario.",
-                        Toast.LENGTH_LONG).show()
-                    updateUI(null)
-                }
-            }
-
+    fun Fragment.getFragmentNavController(@IdRes id: Int) = activity?.let {
+        return@let Navigation.findNavController(it,id)
     }
 }

@@ -9,14 +9,17 @@
     <string name="login_text">Bienvenido</string>
     <string name="login_email">Correo electrónico</string>
     <string name="login_password">Contraseña</string>
-    <string name="login_button">INGRESAR</string>
-    <string name="continue_button">CONTINUAR</string>
+    <string name="login_button">Ingresar</string>
+    <string name="continue_button">Continuar</string>
+    <string name="use_coupon_button">Usar Cupón</string>
+
     <string name="nombre_tienda">NombreTienda</string>
     <string name="confirmacion_trans">Confirma transacción</string>
     <string name="servicios">Servicios</string>
     <string name="nombre_servicio">Servicio</string>
     <string name="qrcode_message">Muestra este código a tu repartidor</string>
     <string name="tittle_display_transaction">Resumen de transacción</string>
+    <string name="tittle_display_promo">Promoción</string>
     <string name="store_name">StoreName</string>
     <string name="business_name">BusinessName</string>
     <string name="saldo_anterior_label">Saldo anterior</string>

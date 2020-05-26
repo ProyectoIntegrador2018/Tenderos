@@ -47,7 +47,8 @@ class TransactionFragment : Fragment() {
 
         //Opciones de Renderizado del QR
         val renderOption = RenderOption()
-        renderOption.content = transactionAccepted //Contenido del QR
+        if(transactionData != null)
+            renderOption.content = transactionAccepted //Contenido del QR
         renderOption.size = 800 //Tamaño del QR
         renderOption.borderWidth = 20 //Espaciado del marco del QR
         renderOption.patternScale = 0.75f //Tamaño del Patron

@@ -17,8 +17,15 @@
             android:id="@+id/action_mainFragment_to_display_transaction"
             app:destination="@id/fragment_transaction_display" />
         <action
-            android:id="@+id/action_home_fragment_to_fragment_login"
-            app:destination="@id/fragment_login" />
+            android:id="@+id/action_mainFragment_to_display_promo"
+            app:destination="@id/fragment_display_promo" />
+        <action
+        android:id="@+id/action_home_fragment_to_fragment_login"
+        app:destination="@id/fragment_login" />
+
+        <action
+            android:id="@+id/action_home_fragment_to_fragment_cupon_history"
+            app:destination="@id/fragment_cupon_history" />
 
     </fragment>
     <fragment
@@ -27,6 +34,11 @@
         android:label="fragment_display_store_id"
         tools:layout="@layout/fragment_display_store_id" />
     <fragment
+        android:id="@+id/fragment_cupon_history"
+        android:name="com.example.tenderosapp.ui.home.CuponHistoryFragment"
+        android:label="fragment_cupon_history"
+        tools:layout="@layout/fragment_cupon_history" />
+    <fragment
         android:id="@+id/fragment_login"
         android:name="com.example.tenderosapp.ui.login.LoginFragment"
         android:label="fragment_login"
@@ -34,6 +46,9 @@
         <action
             android:id="@+id/action_fragment_login_to_home_fragment"
             app:destination="@id/home_fragment" />
+        <action
+            android:id="@+id/action_fragment_login_to_registerFragment"
+            app:destination="@id/registerFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragment_transaction"
@@ -51,6 +66,21 @@
             app:destination="@id/fragment_transaction" />
 
     </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.tenderosapp.ui.login.RegisterFragment"
+        android:label="RegisterFragment"
+        tools:layout="@layout/fragment_register"/>
 
+    <fragment
+        android:id="@+id/fragment_display_promo"
+        android:name="com.example.tenderosapp.ui.transaction.promoDisplayFragment"
+        android:label="fragment_display_promo"
+        tools:layout="@layout/fragment_display_promo">
+
+        <action
+            android:id="@+id/action_fragmentPromoDisplay_to_HomeFragment"
+            app:destination="@id/home_fragment" />
+    </fragment>
 
 </navigation>

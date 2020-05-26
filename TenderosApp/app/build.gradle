@@ -81,6 +81,7 @@ dependencies {
 
     // Testing Navigation
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.firebase:firebase-firestore:21.4.3'
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
 
     //Network

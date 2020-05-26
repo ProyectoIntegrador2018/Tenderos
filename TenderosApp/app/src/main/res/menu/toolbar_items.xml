@@ -2,15 +2,27 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
-        android:id="@+id/action_show_settings"
-        android:icon="@drawable/outline_settings_black_24"
-        android:title="Settings"
+        android:id="@+id/action_show_logout"
+        android:icon="@drawable/logout"
+        android:title="Logout"
         app:showAsAction="always"/>
 
     <item
-        android:id="@+id/action_show_id"
-        android:icon="@drawable/outline_store_black_24"
+        android:id="@+id/action_read_qr_id"
+        android:icon="@drawable/qrcode"
         android:title="StoreID"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_sale_id"
+        android:icon="@drawable/sale"
+        android:title="Sale"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_show_cupon_history"
+        android:icon="@drawable/ic_history_black_24dp"
+        android:title="Sale"
         app:showAsAction="always"/>
 
 </menu>

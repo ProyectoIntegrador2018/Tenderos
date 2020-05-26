@@ -10,6 +10,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.tenderosapp.data.viewmodel.MainViewModel
 import com.google.zxing.integration.android.IntentIntegrator
+import kotlinx.android.synthetic.main.fragment_login.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,12 +22,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_activity)
         navController = findNavController(R.id.nav_host_fragment)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-
     }
-    override fun onActivityResult(
-        requestCode: Int,
-        resultCode: Int,
-        data: Intent?) {
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         if (result != null) {
             val value = result.contents
@@ -39,4 +37,5 @@ class MainActivity : AppCompatActivity() {
             super.onActivityResult(requestCode, resultCode, data)
         }
     }
+
 }
