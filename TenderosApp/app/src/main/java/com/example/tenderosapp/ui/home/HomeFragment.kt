@@ -44,14 +44,13 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         auth = FirebaseAuth.getInstance()
 
         if(auth.currentUser == null){
-            getFragmentNavController(R.id.nav_host_fragment)!!.navigate(R.id.fragment_login)
+            Navigation.findNavController(view).navigate(R.id.action_home_fragment_to_fragment_login)
         }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-
 
         toolbar_main_tb.inflateMenu(R.menu.toolbar_items)
         toolbar_main_tb.setOnMenuItemClickListener {

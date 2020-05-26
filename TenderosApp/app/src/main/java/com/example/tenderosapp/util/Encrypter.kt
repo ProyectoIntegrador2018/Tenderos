@@ -62,8 +62,6 @@ class Encrypter {
             return datos_post //Cadena Cifrada Lista Para Enviar
         }
 
-
-
         fun decyptData(data_cipher : String) : String {
             // Respuesta en claro a utilizar.
             val encodedKey: ByteArray = Base64.decode(data_cipher.toByteArray(), Base64.DEFAULT)
