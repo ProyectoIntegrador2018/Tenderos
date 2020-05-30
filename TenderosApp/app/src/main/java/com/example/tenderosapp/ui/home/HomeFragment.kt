@@ -79,51 +79,70 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
                 49374 -> {
-                    val scanResult =
-                        IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-                    var decryptedResult = decyptData(scanResult.contents)
+                    try {
+                        val scanResult =
+                            IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+                        var decryptedResult = decyptData(scanResult.contents)
 
-                    if (decryptedResult != null) {
-                        val gson = Gson()
-                        if(isTransaction) {
-                            try {
-                                val convertedTransaction: Transaction =
-                                    gson.fromJson(decryptedResult, Transaction::class.java)
-                                Log.d("ErrorTransactionQR", convertedTransaction.transactionId)
-                                if (convertedTransaction == null) {
-                                    throw Exception()
+                        if (decryptedResult != null) {
+                            val gson = Gson()
+                            if (isTransaction) {
+                                try {
+                                    val convertedTransaction: Transaction =
+                                        gson.fromJson(decryptedResult, Transaction::class.java)
+                                    Log.d("ErrorTransactionQR", convertedTransaction.transactionId)
+                                    if (convertedTransaction.transactionId == null) {
+                                        throw Exception()
+                                    }
+                                    convertedTransaction.saleTotal.toString()
+                                    val bundle = bundleOf("transaction_data" to decryptedResult)
+                                    (context as MainActivity).navController.navigate(
+                                        R.id.action_mainFragment_to_display_transaction,
+                                        bundle
+                                    )
+                                } catch (e: Exception) {
+
+                                    Toast.makeText(
+                                        activity,
+                                        "Error en la transacción: Código QR inválido....",
+                                        Toast.LENGTH_LONG
+                                    ).show()
                                 }
+                            } else {
+                                try {
+                                    val convertedPromo: Promo =
+                                        gson.fromJson(decryptedResult, Promo::class.java)
+                                    Log.d("ErrorTransactionQR", convertedPromo.couponCode)
+                                    if (convertedPromo.couponCode == "") {
+                                        throw Exception()
+                                    }
 
-                                val bundle = bundleOf("transaction_data" to decryptedResult)
-                                (context as MainActivity).navController.navigate(
-                                    R.id.action_mainFragment_to_display_transaction,
-                                    bundle
-                                )
-                            } catch (e: Exception) {
+                                    val bundle = bundleOf("promo_data" to decryptedResult)
+                                    (context as MainActivity).navController.navigate(
+                                        R.id.action_mainFragment_to_display_promo,
+                                        bundle
+                                    )
+                                } catch (e: Exception) {
 
-                                Toast.makeText(activity, decryptedResult, Toast.LENGTH_LONG).show()
-                            }
-                        } else {
-                            try {
-                                val convertedPromo: Promo =
-                                    gson.fromJson(decryptedResult, Promo::class.java)
-                                Log.d("ErrorTransactionQR", convertedPromo.couponCode)
-                                if (convertedPromo == null) {
-                                    throw Exception()
+                                    Toast.makeText(
+                                        activity,
+                                        "Error en la Promoción: cupón inválido",
+                                        Toast.LENGTH_LONG
+                                    ).show()
                                 }
-
-                                val bundle = bundleOf("promo_data" to decryptedResult)
-                                (context as MainActivity).navController.navigate(
-                                    R.id.action_mainFragment_to_display_promo,
-                                    bundle
-                                )
-                            } catch (e: Exception) {
-
-                                Toast.makeText(activity, "Error Leyendo Promo..", Toast.LENGTH_LONG).show()
                             }
+
+
                         }
+                    } catch (e: Exception) {
 
+                        Toast.makeText(
+                            activity,
+                            "Error: Código QR inválido",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
+
                 }
             }
         }
