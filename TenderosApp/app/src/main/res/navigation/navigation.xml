@@ -27,6 +27,10 @@
             android:id="@+id/action_home_fragment_to_fragment_cupon_history"
             app:destination="@id/fragment_cupon_history" />
 
+        <action
+            android:id="@+id/action_home_fragment_to_fragment_transaction_history"
+            app:destination="@id/fragment_transaction_history" />
+
     </fragment>
     <fragment
         android:id="@+id/fragment_display_store_id"
@@ -38,6 +42,11 @@
         android:name="com.example.tenderosapp.ui.home.CuponHistoryFragment"
         android:label="fragment_cupon_history"
         tools:layout="@layout/fragment_cupon_history" />
+    <fragment
+        android:id="@+id/fragment_transaction_history"
+        android:name="com.example.tenderosapp.ui.home.TransactionHistoryFragment"
+        android:label="fragment_transaction_history"
+        tools:layout="@layout/fragment_transaction_history" />
     <fragment
         android:id="@+id/fragment_login"
         android:name="com.example.tenderosapp.ui.login.LoginFragment"

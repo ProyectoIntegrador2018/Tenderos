@@ -5,6 +5,7 @@ import androidx.annotation.NonNull
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.tenderosapp.model.Promo
+import com.example.tenderosapp.model.Transaction
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.Timestamp
@@ -23,6 +24,8 @@ class AppClient {
     var isEmailRegistered: MutableLiveData<Boolean?>
     var isPromoRegistered: MutableLiveData<Boolean?>
     var promotionlist: MutableLiveData<ArrayList<Promo>?>
+    var transactionlist: MutableLiveData<ArrayList<Transaction>?>
+    var isTransactionRegistered: MutableLiveData<Boolean?>
 
 
     var db: FirebaseFirestore
@@ -32,6 +35,8 @@ class AppClient {
         isEmailRegistered = MutableLiveData()
         isPromoRegistered = MutableLiveData()
         promotionlist = MutableLiveData()
+        isTransactionRegistered = MutableLiveData()
+        transactionlist = MutableLiveData()
         db = FirebaseFirestore.getInstance()
         settings =  FirebaseFirestoreSettings.Builder()
             .setPersistenceEnabled(true)
@@ -44,7 +49,7 @@ class AppClient {
         private var instance: AppClient? = null
         fun getInstance(): AppClient {
             if (instance == null) {
-                instance = AppClient()
+                instance = com.example.tenderosapp.data.client.AppClient()
             }
             return instance as AppClient
         }
@@ -53,6 +58,8 @@ class AppClient {
     fun getIsEmailRegistered(): LiveData<Boolean?> = isEmailRegistered
     fun getRegisterPromoSucccess(): LiveData<Boolean?> = isPromoRegistered
     fun getPromotionList() : LiveData<ArrayList<Promo>?> = promotionlist
+    fun getRegisterTransactionSucccess(): LiveData<Boolean?> = isTransactionRegistered
+    fun getTransactionList() : LiveData<ArrayList<Transaction>?> = transactionlist
 
 
     fun queryGetPromorionList(uid : String) {
@@ -115,6 +122,48 @@ class AppClient {
             .addOnFailureListener { e -> Log.w(
                 "promotion_list", "Error writing document", e)
                 isPromoRegistered.postValue(false)
+            }
+    }
+
+    fun queryGetTransactionList(uid : String) {
+        db.collection("profile")
+            .document(uid)
+            .collection("transaction_list")
+            .get()
+            .addOnCompleteListener { task ->
+                val transactions : ArrayList<Transaction> = ArrayList()
+
+                if (task.isSuccessful) {
+                    for (document in task.result!!) {
+                        val myObject = document.toObject(Transaction::class.java)
+                        transactions.add(myObject)
+                        Log.d("OBJECT", myObject.toString())
+                    }
+                } else {
+                    Log.w("ERROR DATA", "Error getting documents.", task.getException())
+                }
+                Log.d("transac leng SIZE: ", transactions.size.toString())
+                if (transactions.size >0){
+                    transactionlist.postValue(transactions)
+                }else transactionlist.postValue(null)
+            }
+
+    }
+
+    fun queryRegisterTransaction(transaction : Transaction, uid : String) {
+        Log.d("Transaction => ", transaction.toString())
+
+        db.collection("profile")
+            .document(uid)
+            .collection("transaction_list")
+            .add(transaction)
+            .addOnSuccessListener {
+                Log.d("transaction_list", "DocumentSnapshot successfully written!")
+                isTransactionRegistered.postValue(true)
+            }
+            .addOnFailureListener { e -> Log.w(
+                "transaction_list", "Error writing document", e)
+                isTransactionRegistered.postValue(false)
             }
     }
 

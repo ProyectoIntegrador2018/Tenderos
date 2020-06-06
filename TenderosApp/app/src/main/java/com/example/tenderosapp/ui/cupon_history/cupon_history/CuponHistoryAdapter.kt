@@ -24,7 +24,7 @@ class CuponHistoryAdapter (val context : Context, list: ArrayList<Promo>) : Recy
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CuponHistoryViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.cupon_history_item, parent, false)
-        return CuponHistoryViewHolder(view)
+        return com.app.calendarioliturgico.view.calendar.CuponHistoryViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: CuponHistoryViewHolder, position: Int) {
