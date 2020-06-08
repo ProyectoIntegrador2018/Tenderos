@@ -68,7 +68,7 @@ class TransactionDisplayFragment : Fragment() {
         recyclerview.apply {
             layoutManager = LinearLayoutManager(activity)
 
-            adapter = customAdapter(transaction.products)
+            adapter = customAdapter(transaction.products!!)
         }
 
         continue_button.setOnClickListener {
