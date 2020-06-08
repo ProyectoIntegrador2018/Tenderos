@@ -3,6 +3,7 @@ package com.app.calendarioliturgico.view.calendar
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.icu.text.SimpleDateFormat
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -29,12 +30,12 @@ class CuponHistoryAdapter (val context : Context, list: ArrayList<Promo>) : Recy
 
     override fun onBindViewHolder(holder: CuponHistoryViewHolder, position: Int) {
         val provider: Promo = items[position]
-        val date = Date(provider.ExpiryDate)
-//        holder.provider_name_tv.text = provider.couponDiscount
-        holder.date_tv.text = date.toString()
-        holder.percentage_tv.text = provider.couponDiscount
+        val date = Date(provider.ExpiryDate).toString()
+        val formatted_date = date.substring(4,16)
+
+        holder.date_tv.text = formatted_date
+        holder.client_tv.text = "Cupón de " + provider.businessName
         holder.product_name_tv.text = provider.description
-//        Glide.with(context).load(ColorDrawable(Color.parseColor(provider.colorRGB))).circleCrop().into(holder.provider_color_iv)
         holder.itemView.setOnClickListener {
            Toast.makeText(context, "TODO: Implement provider flow.", Toast.LENGTH_SHORT).show()
         }

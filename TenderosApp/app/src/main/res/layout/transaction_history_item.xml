@@ -18,22 +18,6 @@
         android:padding="26dp">
 
         <TextView
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:fontFamily="@font/rubik"
-            android:lines="1"
-            android:singleLine="true"
-            android:text="fecha"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:textColor="@color/default_black"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/percentage"
-            app:layout_constraintStart_toEndOf="@+id/percentage"
-            app:layout_constraintTop_toTopOf="@+id/percentage"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <TextView
             android:id="@+id/business_name"
             android:layout_width="wrap_content"
             android:fontFamily="@font/rubik"
@@ -41,12 +25,27 @@
             android:singleLine="true"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:textColor="@color/default_black"
-            android:textSize="16sp"
-            android:text="descrioicon"
+            android:text="cliente"
+            android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/rubik"
+            android:lines="1"
+            android:singleLine="true"
+            android:text="fecha"
+            android:textColor="@color/default_lightblack"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/percentage"
+            app:layout_constraintStart_toEndOf="@+id/percentage"
+            app:layout_constraintTop_toTopOf="@+id/percentage"
             app:layout_constraintVertical_chainStyle="packed" />
 
 

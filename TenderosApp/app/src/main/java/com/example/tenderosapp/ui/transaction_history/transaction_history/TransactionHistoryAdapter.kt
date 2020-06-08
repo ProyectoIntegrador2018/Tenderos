@@ -25,9 +25,11 @@ class TransactionHistoryAdapter (val context : Context, list: ArrayList<Transact
 
     override fun onBindViewHolder(holder: TransactionHistoryViewHolder, position: Int) {
         val transaction: Transaction = items[position]
-        val date = Date(transaction.date)
-        holder.date_tv.text = date.toString()
-        holder.saleTotal_tv.text = transaction.saleTotal.toString()
+        val date = Date(transaction.date).toString()
+        val formatted_date = date.substring(4,16)
+
+        holder.date_tv.text = formatted_date
+        holder.saleTotal_tv.text = "Se pagó un total de $" + transaction.saleTotal.toString()
         holder.businessName_tv.text = transaction.businessName
         holder.itemView.setOnClickListener {
            Toast.makeText(context, "TODO: Implement transaction flow.", Toast.LENGTH_SHORT).show()
