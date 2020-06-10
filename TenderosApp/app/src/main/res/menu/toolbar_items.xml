@@ -25,4 +25,10 @@
         android:title="Sale"
         app:showAsAction="always"/>
 
+    <item
+        android:id="@+id/action_show_transaction_history"
+        android:icon="@drawable/baseline_check"
+        android:title="Transaction"
+        app:showAsAction="always"/>
+
 </menu>

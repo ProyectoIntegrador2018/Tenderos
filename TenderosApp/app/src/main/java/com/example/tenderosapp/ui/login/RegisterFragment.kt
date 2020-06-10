@@ -19,6 +19,7 @@ import com.example.tenderosapp.data.viewmodel.MainViewModel
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_register.*
+import java.lang.Exception
 
 class RegisterFragment : Fragment(R.layout.fragment_register) {
 
@@ -59,23 +60,29 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         auth.createUserWithEmailAndPassword(register_email_tf.text.toString(), register_psswd_tf.text.toString())
             .addOnCompleteListener() { task ->
                 if (task.isSuccessful) {
-                    // Exito, hacer login al nuevo usuario
-                    Log.d(ContentValues.TAG, "createUserWithEmail:success")
-                    Toast.makeText(context, "Usuario Creado",
-                        Toast.LENGTH_LONG).show()
-                    val user = auth.currentUser
-                    if(user != null){
-                        getFragmentNavController(R.id.nav_host_fragment)!!.popBackStack()
-                    } else {
-                        Toast.makeText(this.context, "Error al Crear usuario", Toast.LENGTH_LONG).show()
+                    try {
+                        // Exito, hacer login al nuevo usuario
+                        //Log.d(ContentValues.TAG, "createUserWithEmail:success")
+                        Toast.makeText(context, "Usuario Creado",
+                            Toast.LENGTH_LONG).show()
+                        val user = auth.currentUser
+                        if(user != null){
+                            getFragmentNavController(R.id.nav_host_fragment)!!.popBackStack()
+                        } else {
+                            Toast.makeText(this.context, "Error al Crear usuario", Toast.LENGTH_LONG).show()
+                        }
+                    } catch (e: Exception) {
+                        Toast.makeText(this.context, "Intentelo nuevamente mas tarde.", Toast.LENGTH_LONG).show()
                     }
-
                 } else {
-                    // Error al Crear usuario
-                    Log.w(ContentValues.TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(this.context, "Error al crear usuario.",
-                        Toast.LENGTH_LONG).show()
-                    getFragmentNavController(R.id.nav_host_fragment)!!.popBackStack()
+                    try {
+                        // Error al Crear usuario
+                        //Log.w(ContentValues.TAG, "createUserWithEmail:failure", task.exception)
+                        Toast.makeText(this.context, "Error al crear usuario.", Toast.LENGTH_LONG).show()
+                        getFragmentNavController(R.id.nav_host_fragment)!!.popBackStack()
+                    } catch (e: Exception) {
+                        //Nothing
+                    }
                 }
             }
 

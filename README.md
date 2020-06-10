@@ -59,6 +59,9 @@ You should ask for access to this tools if you don't have it already:
 
 ## Development
 
+### Changelog v0.4 - Closure
+- Added The transaction history
+
 ### Changelog v0.3 - Cupons
 - Added HU011 Receive coupon, and encrypt qr codes
 

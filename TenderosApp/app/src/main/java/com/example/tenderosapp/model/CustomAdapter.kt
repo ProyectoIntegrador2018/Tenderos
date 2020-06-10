@@ -10,13 +10,13 @@ import com.example.tenderosapp.R
 import kotlinx.android.synthetic.main.product_list.*
 import kotlinx.android.synthetic.main.product_list.view.*
 
-class customAdapter (val productList: MutableList<TransactionProduct>) : RecyclerView.Adapter<CustomViewHolder>() {
+class customAdapter (val productList: List<TransactionProduct>) : RecyclerView.Adapter<CustomViewHolder>() {
 
     override fun getItemCount(): Int = productList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return CustomViewHolder(layoutInflater, parent)
+        return com.example.tenderosapp.model.CustomViewHolder(layoutInflater, parent)
     }
 
 

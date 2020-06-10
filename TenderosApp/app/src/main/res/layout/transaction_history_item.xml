@@ -18,18 +18,18 @@
         android:padding="26dp">
 
         <TextView
-            android:id="@+id/client"
+            android:id="@+id/business_name"
             android:layout_width="wrap_content"
             android:fontFamily="@font/rubik"
             android:lines="1"
             android:singleLine="true"
-            android:text="cliente"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:text="cliente"
             android:textAppearance="?attr/textAppearanceHeadline6"
-            app:layout_constraintBottom_toBottomOf="@+id/percentage"
-            app:layout_constraintStart_toEndOf="@+id/percentage"
-            app:layout_constraintTop_toTopOf="@+id/percentage"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
@@ -43,21 +43,21 @@
             android:text="fecha"
             android:textColor="@color/default_lightblack"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/percentage"
+            app:layout_constraintStart_toEndOf="@+id/percentage"
+            app:layout_constraintTop_toTopOf="@+id/percentage"
             app:layout_constraintVertical_chainStyle="packed" />
 
 
         <TextView
-            android:id="@+id/product_name"
+            android:id="@+id/sale_total"
             android:layout_width="wrap_content"
             android:fontFamily="@font/rubik"
-            android:lines="2"
-            android:text="descripcion"
-            android:singleLine="false"
+            android:lines="1"
+            android:text="id"
+            android:singleLine="true"
             android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
+            android:layout_marginStart="16dp"
             android:textColor="@color/default_black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/product_name"

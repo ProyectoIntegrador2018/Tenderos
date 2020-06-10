@@ -7,15 +7,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tenderosapp.R
 import com.google.android.material.card.MaterialCardView
 
-class CuponHistoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    var client_tv: TextView
-    var product_name_tv : TextView
+class TransactionHistoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     var date_tv : TextView
+    var businessName_tv: TextView
+    var saleTotal_tv : TextView
     val provider_background_cv : MaterialCardView
 
     init {
-        client_tv = itemView.findViewById(R.id.client)
-        product_name_tv = itemView.findViewById(R.id.product_name)
+        saleTotal_tv = itemView.findViewById(R.id.sale_total)
+        businessName_tv = itemView.findViewById(R.id.business_name)
         date_tv = itemView.findViewById(R.id.date)
 
         provider_background_cv = itemView.findViewById(R.id.provider_background_cv)

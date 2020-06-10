@@ -153,6 +153,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                 //viewModel.queryGetBalance()
             }
             R.id.action_show_cupon_history -> (context as MainActivity).navController.navigate(R.id.action_home_fragment_to_fragment_cupon_history)
+            R.id.action_show_transaction_history -> (context as MainActivity).navController.navigate(R.id.action_home_fragment_to_fragment_transaction_history)
         }
         return super.onOptionsItemSelected(item)
     }

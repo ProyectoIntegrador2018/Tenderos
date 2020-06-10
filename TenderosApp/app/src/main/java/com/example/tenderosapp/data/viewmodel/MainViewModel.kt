@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.tenderosapp.data.repository.AppRepository
 import com.example.tenderosapp.data.repository.PagofonRepository
 import com.example.tenderosapp.model.Promo
+import com.example.tenderosapp.model.Transaction
 import com.example.tenderosapp.model.response.BalanceResponse
 
 class MainViewModel : ViewModel() {
@@ -38,6 +39,10 @@ class MainViewModel : ViewModel() {
     fun queryRegisterPromo(promo : Promo, uid: String)  = appRepository.queryRegisterPromo(promo, uid)
 
     fun getPromotionList() : LiveData<ArrayList<Promo>?> = appRepository.getPromotionList()
+    fun getTransactionList() : LiveData<ArrayList<Transaction>?> = appRepository.getTransactionList()
+    fun queryRegisterTransaction(transaction : Transaction, uid: String)  = appRepository.queryRegisterTransaction(transaction, uid)
 
     fun queryGetPromorionList(uid : String)  = appRepository.queryGetPromorionList(uid)
+    fun queryGetTransactionList(uid : String)  = appRepository.queryGetTransactionList(uid)
+
 }
