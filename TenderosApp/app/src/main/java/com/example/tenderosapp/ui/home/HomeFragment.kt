@@ -90,7 +90,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                                 val convertedTransaction: Transaction =
                                     gson.fromJson(decryptedResult, Transaction::class.java)
                                 Log.d("ErrorTransactionQR", convertedTransaction.transactionId)
-                                if (convertedTransaction == null) {
+                                if (convertedTransaction.transactionId == "") {
                                     throw Exception()
                                 }
 
@@ -101,14 +101,14 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                                 )
                             } catch (e: Exception) {
 
-                                Toast.makeText(activity, decryptedResult, Toast.LENGTH_LONG).show()
+                                Toast.makeText(activity, "Error al leer transaccion..", Toast.LENGTH_LONG).show()
                             }
                         } else {
                             try {
                                 val convertedPromo: Promo =
                                     gson.fromJson(decryptedResult, Promo::class.java)
                                 Log.d("ErrorTransactionQR", convertedPromo.couponCode)
-                                if (convertedPromo == null) {
+                                if (convertedPromo.couponCode == "") {
                                     throw Exception()
                                 }
 
@@ -119,7 +119,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                                 )
                             } catch (e: Exception) {
 
-                                Toast.makeText(activity, "Error Leyendo Promo..", Toast.LENGTH_LONG).show()
+                                Toast.makeText(activity, "Error al Leer Promo..", Toast.LENGTH_LONG).show()
                             }
                         }
 
